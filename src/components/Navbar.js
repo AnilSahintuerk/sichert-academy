@@ -3,9 +3,9 @@ import Box from "@mui/material/Box";
 import HomeIcon from "@mui/icons-material/Home";
 import { Typography } from "@mui/material";
 
-function Preview() {
+function Navbar() {
   return (
-    <div className="App">
+    <div className="Navbar">
       <Box
         sx={{
           width: "100vw",
@@ -29,4 +29,4 @@ function Preview() {
   );
 }
 
-export default Preview;
+export default Navbar;

@@ -1,5 +1,6 @@
 import Preview from "./components/Preview";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Typography, Stack, Container, Avatar } from "@mui/material";
 
 const theme = createTheme({
   palette: {
