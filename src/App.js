@@ -1,4 +1,4 @@
-import Preview from "./components/Preview";
+import TagFilter from "./components/TagFilter";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Typography, Stack, Container, Avatar } from "@mui/material";
 
@@ -25,7 +25,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Preview />
+        <TagFilter />
       </div>
     </ThemeProvider>
   );
