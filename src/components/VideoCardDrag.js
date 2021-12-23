@@ -20,7 +20,6 @@ tag
 function VideoCardDrag(props) {
   return (
     <Card
-      elevation={10}
       sx={{
         width: "485px",
         height: "128px",
@@ -57,7 +56,7 @@ function VideoCardDrag(props) {
       >
         <CardContent
           sx={{
-            padding: "0 8px",
+            padding: "0 16px 0 8px",
             display: "flex",
             flex: "auto",
             flexDirection: "column",
