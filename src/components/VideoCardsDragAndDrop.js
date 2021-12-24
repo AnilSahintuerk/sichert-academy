@@ -33,19 +33,6 @@ const DATA = [
   },
 ];
 
-const COLUMNS = [
-  {
-    id: "0",
-    title: "ALL",
-    cardsIds: [0, 1, 2],
-  },
-  {
-    id: "0",
-    title: "SELECTION",
-    cardsIds: [],
-  },
-];
-
 function Preview() {
   const [allCards, updateAllCards] = useState(DATA);
   const [selectedCards, updateSelectedCards] = useState([]);
@@ -75,9 +62,12 @@ function Preview() {
           (x) => x !== selectedItem
         );
 
-        selectedCardsArray.push(selectedItem);
+        // selectedCardsArray.push(selectedItem);
+        const [slectedItem] = selectedCardsArray.splice(result.source.index, 0);
+        selectedCardsArray.splice(result.destination.index, 0, selectedItem);
 
         updateAllCards(newAllCardsArray);
+        updateSelectedCards(selectedCardsArray);
       } else {
         const allCardsArray = Array.from(allCards);
         const selectedCardsArray = Array.from(selectedCards);
@@ -89,8 +79,8 @@ function Preview() {
           (x) => x !== selectedItem
         );
 
-        allCardsArray.push(selectedItem);
-
+        const [slectedItem] = allCardsArray.splice(result.source.index, 0);
+        allCardsArray.splice(result.destination.index, 0, selectedItem);
         updateAllCards(allCardsArray);
         updateSelectedCards(newSelectedCardsArray);
       }
