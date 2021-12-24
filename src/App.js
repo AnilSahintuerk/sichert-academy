@@ -1,6 +1,7 @@
 import Preview from "./components/Preview";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { Typography, Stack, Container, Avatar } from "@mui/material";
+import VideoCardStatic from "./components/VideoCardStatic";
+import { Box } from "@mui/system";
 
 const theme = createTheme({
   palette: {
@@ -16,16 +17,44 @@ const theme = createTheme({
     error_container: { main: "#FFDAD4", contrastText: "#410001" },
     surface_variant: { main: "#E0E2EB", contrastText: "#43474F" },
     neutral: { main: "#74777F", contrastText: "#fff" },
-    white: { main: "#fff" },
-    black: { main: "#000" },
+    neutral2: { main: "#fff", contrastText: "#000" },
+    black: { main: "#000", contrastText: "#fff" },
+  },
+
+  components: {
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          padding: 0,
+          "&:last-child": {
+            paddingBottom: 0,
+          },
+        },
+      },
+    },
   },
 });
+
+const lecture = {
+  id: "0",
+  title: "Hello World",
+  description: "kurze beschreibung",
+  time: "03:04",
+  src: "4.jpg",
+  teacher: {
+    name: "Martina",
+    id: "2",
+    src: "2.png",
+  },
+};
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Preview />
+        <Box sx={{ border: "1px solid red", padding: "20px" }}>
+          <Preview />
+        </Box>
       </div>
     </ThemeProvider>
   );
