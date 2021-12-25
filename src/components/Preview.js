@@ -120,6 +120,7 @@ function Preview(props) {
   const [playbackRate, setPlaybackRate] = useState(1.0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [seeking, setSeeking] = useState(null);
+  const [onHover, setOnHover] = useState(false);
 
   function ValueLabelComponent(props) {
     const { children, value } = props;
@@ -180,8 +181,16 @@ function Preview(props) {
 
   const handleSeekMouseUp = (event, newValue) => {
     setSeeking(false);
-    console.log(newValue);
     videoRef.current.seekTo(newValue / 100);
+  };
+
+  const handleHover = () => {
+    setOnHover(true);
+  };
+
+  const handleHoverLeave = () => {
+    setOnHover(false);
+    console.log("hello");
   };
 
   const open = Boolean(anchorEl);
@@ -193,6 +202,7 @@ function Preview(props) {
       sx={{ display: "flex", flexDirection: "column", gap: "0" }}
     >
       <Box
+        onMouseLeave={handleHoverLeave}
         sx={{
           width: "100%",
           height: "100%",
@@ -213,137 +223,153 @@ function Preview(props) {
           onProgress={handleProgress}
         ></ReactPlayer>
 
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: "0",
-            left: "0",
-            right: "0",
-            marginBottom: "5px",
-            background: "rgba(10,0,0,0.5)",
-            width: "99.9%",
-            height: "40px",
-          }}
-        >
-          <Slider
-            min={0}
-            max={100}
-            value={playedTime * 100}
-            onChange={handleSeekChange}
-            onMouseDown={handleSeekMouseDown}
-            onChangeCommitted={handleSeekMouseUp}
-            valueLabelDisplay="auto"
-            components={{
-              ValueLabel: ValueLabelComponent,
-            }}
-            aria-label="custom thumb label"
-            sx={{ position: "absolute", bottom: "27px" }}
-          ></Slider>
-          <Stack
+        {onHover ? (
+          <Box
             sx={{
-              color: "#fff",
-              flexDirection: "row",
+              position: "absolute",
+              bottom: "0",
+              left: "0",
+              right: "0",
+              marginBottom: "5px",
+              background: "rgba(10,0,0,0.5)",
+              width: "99.9%",
               height: "40px",
-              flex: "1 0 auto",
-              alignItems: "center",
-              alignContent: "center",
             }}
           >
+            <Slider
+              min={0}
+              max={100}
+              value={playedTime * 100}
+              onChange={handleSeekChange}
+              onMouseDown={handleSeekMouseDown}
+              onChangeCommitted={handleSeekMouseUp}
+              valueLabelDisplay="auto"
+              components={{
+                ValueLabel: ValueLabelComponent,
+              }}
+              aria-label="custom thumb label"
+              sx={{ position: "absolute", bottom: "27px" }}
+            ></Slider>
             <Stack
               sx={{
+                color: "#fff",
                 flexDirection: "row",
-                minWidth: "50%",
-                gap: "24px",
-                marginLeft: "8px",
+                height: "40px",
+                flex: "1 0 auto",
+                alignItems: "center",
+                alignContent: "center",
               }}
             >
-              <IconButton sx={{ color: "#fff" }} onClick={handlePlayPause}>
-                {playing ? (
-                  <PauseIcon fontSize="large" />
-                ) : (
-                  <PlayArrow fontSize="large" />
-                )}
-              </IconButton>
-              <IconButton sx={{ color: "#fff" }} onClick={handleReplay}>
-                <Replay30Icon />
-              </IconButton>
-              <Typography
+              <Stack
                 sx={{
-                  color: "#fff",
-                  alignSelf: "center",
+                  flexDirection: "row",
+                  minWidth: "50%",
+                  gap: "24px",
+                  marginLeft: "8px",
                 }}
               >
-                0:55/1:25
-              </Typography>
-              <IconButton sx={{ color: "#fff" }} onClick={handleForward}>
-                <Forward30Icon />
-              </IconButton>
+                <IconButton sx={{ color: "#fff" }} onClick={handlePlayPause}>
+                  {playing ? (
+                    <PauseIcon fontSize="large" />
+                  ) : (
+                    <PlayArrow fontSize="large" />
+                  )}
+                </IconButton>
+                <IconButton sx={{ color: "#fff" }} onClick={handleReplay}>
+                  <Replay30Icon />
+                </IconButton>
+                <Typography
+                  sx={{
+                    color: "#fff",
+                    alignSelf: "center",
+                  }}
+                >
+                  0:55/1:25
+                </Typography>
+                <IconButton sx={{ color: "#fff" }} onClick={handleForward}>
+                  <Forward30Icon />
+                </IconButton>
+              </Stack>
+              <Stack
+                sx={{
+                  flexDirection: "row",
+                  minWidth: "50%",
+                  justifyContent: "flex-end",
+                  gap: "8px",
+                }}
+              >
+                <IconButton sx={{ marginRight: "14px", color: "#fff" }}>
+                  <DescriptionIcon />
+                </IconButton>
+                <IconButton sx={{ color: "#fff" }} onClick={handleMute}>
+                  {mute ? <VolumeOffIcon /> : <VolumeUpIcon />}
+                </IconButton>
+                <IconButton sx={{ color: "#fff" }}>
+                  <SettingsIcon />
+                </IconButton>
+                <Button
+                  variant="text"
+                  align="center"
+                  onClick={handleClick}
+                  sx={{ fontSize: "16px", color: "#fff" }}
+                >
+                  {playbackRate}X
+                </Button>
+                <Popover
+                  anchorEl={anchorEl}
+                  onClose={handleClose}
+                  open={open}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "center",
+                  }}
+                  transformOrigin={{
+                    vertical: "bottom",
+                    horizontal: "center",
+                  }}
+                  color="primary"
+                >
+                  <Stack direction="column-reverse">
+                    {[0.5, 1, 1.5, 2].map((rate) => (
+                      <Button
+                        variant="text"
+                        align="center"
+                        onClick={() => handlePlaybackRate(rate)}
+                        sx={{
+                          fontSize: "16px",
+                          color: "#000",
+                          background: "#fff",
+                        }}
+                      >
+                        {rate}
+                      </Button>
+                    ))}
+                  </Stack>
+                </Popover>
+                <IconButton
+                  sx={{ marginRight: "16px", color: "#fff" }}
+                  onClick={handleFullScreen}
+                >
+                  {fullScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
+                </IconButton>
+              </Stack>
             </Stack>
-            <Stack
-              sx={{
-                flexDirection: "row",
-                minWidth: "50%",
-                justifyContent: "flex-end",
-                gap: "8px",
-              }}
-            >
-              <IconButton sx={{ marginRight: "14px", color: "#fff" }}>
-                <DescriptionIcon />
-              </IconButton>
-              <IconButton sx={{ color: "#fff" }} onClick={handleMute}>
-                {mute ? <VolumeOffIcon /> : <VolumeUpIcon />}
-              </IconButton>
-              <IconButton sx={{ color: "#fff" }}>
-                <SettingsIcon />
-              </IconButton>
-              <Button
-                variant="text"
-                align="center"
-                onClick={handleClick}
-                sx={{ fontSize: "16px", color: "#fff" }}
-              >
-                {playbackRate}X
-              </Button>
-              <Popover
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                open={open}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "center",
-                }}
-                transformOrigin={{
-                  vertical: "bottom",
-                  horizontal: "center",
-                }}
-                color="primary"
-              >
-                <Stack direction="column-reverse">
-                  {[0.5, 1, 1.5, 2].map((rate) => (
-                    <Button
-                      variant="text"
-                      align="center"
-                      onClick={() => handlePlaybackRate(rate)}
-                      sx={{
-                        fontSize: "16px",
-                        color: "#000",
-                        background: "#fff",
-                      }}
-                    >
-                      {rate}
-                    </Button>
-                  ))}
-                </Stack>
-              </Popover>
-              <IconButton
-                sx={{ marginRight: "16px", color: "#fff" }}
-                onClick={handleFullScreen}
-              >
-                {fullScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
-              </IconButton>
-            </Stack>
-          </Stack>
-        </Box>
+          </Box>
+        ) : (
+          <Box
+            onMouseOver={handleHover}
+            sx={{
+              position: "absolute",
+              bottom: "0",
+              left: "0",
+              right: "0",
+              top: "0",
+              marginBottom: "5px",
+              width: "99.9%",
+              height: "100%",
+            }}
+          ></Box>
+        )}
       </Box>
     </Container>
   );
