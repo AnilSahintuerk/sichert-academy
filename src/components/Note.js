@@ -13,26 +13,6 @@ Noteblock - Object
 })
  */
 
-const NOTEBLOCK_DATA = [
-  {
-    id: "0",
-    notes: {
-      index: "0",
-      content:
-        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
-      timestamp: "00:32",
-    },
-  },
-  {
-    id: "1",
-    notes: {
-      index: "1",
-      content: "Lorem ipsum dolor sit ",
-      timestamp: "01:12",
-    },
-  },
-];
-
 function Note(props) {
   return (
     <Stack direction="row" sx={{ width: "100%", flex: "1 0 auto" }}>
@@ -52,6 +32,9 @@ function Note(props) {
             padding: "8px 0",
             display: "flex",
             justifyContent: "center",
+          }}
+          onClick={() => {
+            props.skipToTimestamp(props.timestamp);
           }}
         >
           {props.timestamp}

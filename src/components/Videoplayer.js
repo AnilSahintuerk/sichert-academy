@@ -1,5 +1,6 @@
 import IconButton from "@mui/material/IconButton";
-import { PlayArrow, PlaylistRemove } from "@mui/icons-material";
+import PlayArrow from "@mui/icons-material/PlayArrow";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import Forward30Icon from "@mui/icons-material/Forward30";
 import Replay30Icon from "@mui/icons-material/Replay30";
 import DescriptionIcon from "@mui/icons-material/Description";
@@ -151,6 +152,12 @@ function Videoplayer(props) {
     } else {
       setPlayerSize("xl");
     }
+  };
+
+  const skipToTimestamp = (timestamp) => {
+    const time = timestamp.split(":");
+    const seconds = parseInt(time[0]) * 60 + parseInt(time[1]);
+    videoRef.current.seekTo(seconds);
   };
 
   return (
@@ -352,12 +359,24 @@ function Videoplayer(props) {
               top: "0",
               width: "100%",
               height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          ></Box>
+          >
+            {playing ? (
+              <Box />
+            ) : (
+              <PlayCircleIcon sx={{ fontSize: "128px", color: "#fff" }} />
+            )}
+          </Box>
         )}
       </Box>
       {description ? (
-        <NoteBlock noteblockData={props.noteblockData} />
+        <NoteBlock
+          noteblockData={props.noteblockData}
+          skipToTimestamp={skipToTimestamp}
+        />
       ) : (
         <Box />
       )}

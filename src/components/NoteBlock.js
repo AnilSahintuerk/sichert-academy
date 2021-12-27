@@ -1,4 +1,4 @@
-import { Typography, Box, Stack } from "@mui/material";
+import { Typography, Box, Stack, Slide, List, ListItem } from "@mui/material";
 import Note from "./Note";
 /* 
 A Notblock Contains multiple Notes
@@ -13,12 +13,24 @@ Noteblock - Object
 })
  */
 
+function HideOnScroll(props) {
+  const { children, window } = props;
+
+  return (
+    <Slide appear={false} direction="down">
+      {children}
+    </Slide>
+  );
+}
+
 function NoteBlock(props) {
   return (
     <Box
       sx={{
         position: "relative",
         width: "30%",
+        height: "100%",
+        maxHeight: "540px",
         zIndex: "10",
         display: "flex",
         flexDirection: "column",
@@ -42,6 +54,8 @@ function NoteBlock(props) {
       <Stack
         sx={{
           flexDirection: "column",
+          overflowY: "scroll",
+          maxHeight: "30%",
         }}
       >
         <Box
@@ -57,9 +71,13 @@ function NoteBlock(props) {
             zIndex: "-1",
           }}
         ></Box>
-
         {props.noteblockData.notes.map((x) => (
-          <Note content={x.content} index={x.index} timestamp={x.timestamp} />
+          <Note
+            content={x.content}
+            index={x.index}
+            timestamp={x.timestamp}
+            skipToTimestamp={props.skipToTimestamp}
+          />
         ))}
       </Stack>
     </Box>
