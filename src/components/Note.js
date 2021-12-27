@@ -32,6 +32,10 @@ function Note(props) {
             padding: "8px 0",
             display: "flex",
             justifyContent: "center",
+            "&:hover": {
+              background: "#003063",
+              color: "#fff",
+            },
           }}
           onClick={() => {
             props.skipToTimestamp(props.timestamp);
