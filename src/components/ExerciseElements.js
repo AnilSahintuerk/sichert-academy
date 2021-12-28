@@ -1,12 +1,25 @@
 import { Typography, Box, Stack, Paper } from "@mui/material";
 
+const LABELS = [
+  {
+    header: "Aufgaben",
+    elements: ["Mehrfachauswahl", "Lückentext", "Fallbeispiel"],
+  },
+  {
+    header: "Statische Elemente",
+    elements: ["Bilder", "Video", "Text"],
+  },
+];
+
 function ExerciseElements(props) {
-  return (
+  return LABELS.map((Label, index) => (
     <Stack
+      key={index}
       sx={{
         width: "270px",
         height: "auto",
         gap: "16px",
+        marginBottom: "32px",
       }}
     >
       <Stack
@@ -18,7 +31,7 @@ function ExerciseElements(props) {
           color: "#563E5D",
         }}
       >
-        <Typography sx={{ display: "flex" }}>{props.data.header}</Typography>
+        <Typography sx={{ display: "flex" }}>{Label.header}</Typography>
         <Box
           sx={{
             height: "1px",
@@ -27,9 +40,10 @@ function ExerciseElements(props) {
           }}
         ></Box>
       </Stack>
-      {props.data.tasks.map((task, index) => (
+      {Label.elements.map((element, index) => (
         <Paper
           elevation={3}
+          key={index}
           sx={{
             height: "60px",
             width: "100%",
@@ -45,11 +59,11 @@ function ExerciseElements(props) {
             },
           }}
         >
-          {task}
+          {element}
         </Paper>
       ))}
     </Stack>
-  );
+  ));
 }
 
 export default ExerciseElements;
