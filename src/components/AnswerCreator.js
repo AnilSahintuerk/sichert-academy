@@ -4,13 +4,11 @@ import LabelHeader from "./LabelHeader";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 
-const DUMMY_DATA = ["Ja", "Nein", "Vielleicht"];
-
 function AnswerCreator(props) {
   return (
     <Stack sx={{ width: "100%", gap: "16px" }}>
       <LabelHeader header="Auswahlmöglichkeiten" />
-      {DUMMY_DATA.map((answer, index) => (
+      {props.exercise.answers.map((answer, index) => (
         <Box
           key={index}
           sx={{
