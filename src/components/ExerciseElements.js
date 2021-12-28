@@ -1,4 +1,5 @@
 import { Typography, Box, Stack, Paper } from "@mui/material";
+import LabelHeader from "./LabelHeader";
 
 const LABELS = [
   {
@@ -22,24 +23,7 @@ function ExerciseElements(props) {
         marginBottom: "32px",
       }}
     >
-      <Stack
-        direction="row"
-        sx={{
-          alignItems: "center",
-          overflow: "hidden",
-          gap: "8px",
-          color: "#563E5D",
-        }}
-      >
-        <Typography sx={{ display: "flex" }}>{Label.header}</Typography>
-        <Box
-          sx={{
-            height: "1px",
-            background: "#563E5D",
-            flex: "1",
-          }}
-        ></Box>
-      </Stack>
+      <LabelHeader header={Label.header} />
       {Label.elements.map((element, index) => (
         <Paper
           elevation={3}
