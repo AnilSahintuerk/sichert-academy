@@ -33,7 +33,7 @@ const DATA = [
   },
 ];
 
-function Preview() {
+function VideoCardsDragAndDrop() {
   const [allCards, updateAllCards] = useState(DATA);
   const [selectedCards, updateSelectedCards] = useState([]);
 
@@ -189,4 +189,4 @@ function Preview() {
   );
 }
 
-export default Preview;
+export default VideoCardsDragAndDrop;
