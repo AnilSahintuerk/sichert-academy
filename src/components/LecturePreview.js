@@ -8,7 +8,7 @@ import {
   CardMedia,
 } from "@mui/material";
 
-function Preview(props) {
+function LecturePreview(props) {
   return (
     <Card
       sx={{
@@ -96,4 +96,4 @@ function Preview(props) {
   );
 }
 
-export default Preview;
+export default LecturePreview;

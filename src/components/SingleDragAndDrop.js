@@ -62,18 +62,6 @@ const DATA = [
   },
 ];
 
-const COLUMNS = [
-  {
-    id: "0",
-    title: "ALL",
-    cardsID,
-  },
-  {
-    id: "0",
-    title: "SELECTION",
-  },
-];
-
 function Preview() {
   const [cards, updateCards] = useState(DATA);
 
