@@ -67,14 +67,14 @@ const handleAnswer = (answer) => {
   }
 };
 
-function FAQ(props) {
+function Faq(props) {
+  props = FAQ_DATA;
   return (
     <Stack
       sx={{
         width: "520px",
         justifyContent: "center",
         alignItems: "center",
-        border: "1px dashed green",
       }}
     >
       <Typography
@@ -106,4 +106,4 @@ function FAQ(props) {
   );
 }
 
-export default FAQ;
+export default Faq;

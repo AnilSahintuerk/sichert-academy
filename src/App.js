@@ -1,7 +1,9 @@
 import Preview from "./components/Preview";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import VideoCardStatic from "./components/VideoCardStatic";
 import { Box } from "@mui/system";
+import Navbar from "./components/Navbar";
+import ExerciseCreatorPage from "./pages/ExerciseCreatorPage";
+import HomePage from "./pages/HomePage";
 
 const theme = createTheme({
   palette: {
@@ -19,6 +21,7 @@ const theme = createTheme({
     neutral: { main: "#74777F", contrastText: "#fff" },
     neutral2: { main: "#fff", contrastText: "#000" },
     black: { main: "#000", contrastText: "#fff" },
+    onhover: { main: "#7AACF9", contrastText: "#fff" },
   },
 
   components: {
@@ -52,8 +55,19 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Box sx={{ border: "1px solid red", padding: "20px" }}>
-          <Preview />
+        <Box
+          maxWidth="99%"
+          className="noScroll"
+          sx={{
+            height: "100vh",
+            position: "relative",
+            maxWidth: "100%",
+          }}
+        >
+          {/* <Box sx={{ border: "1px solid red", padding: "20px" }}> */}
+          {/* <Preview /> */}
+          <Navbar />
+          <HomePage />
         </Box>
       </div>
     </ThemeProvider>
