@@ -17,10 +17,9 @@ function QuestionElements(props) {
     <Stack
       key={index}
       sx={{
-        width: "270px",
+        width: "100%",
         height: "auto",
         gap: "16px",
-        marginBottom: "32px",
       }}
     >
       <LabelHeader header={Label.lecture} />

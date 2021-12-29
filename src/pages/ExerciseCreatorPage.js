@@ -21,7 +21,7 @@ function ExerciseCreatorPage(props) {
       }}
     >
       <Container
-        className="container1"
+        className="noScroll"
         maxWidth="25%"
         sx={{
           height: "100vh",
@@ -29,6 +29,7 @@ function ExerciseCreatorPage(props) {
           overflowY: "scroll",
           position: "relative",
           paddingBottom: "64px",
+          background: "#E3E2E6",
         }}
       >
         <GoBack />
