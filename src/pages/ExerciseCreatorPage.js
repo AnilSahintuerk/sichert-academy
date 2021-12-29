@@ -1,5 +1,5 @@
-import AnswerCreator from "../components/AnswerCreator";
-import AnswerPreview from "../components/AnswerPreview";
+import ExerciseCreator from "../components/ExerciseCreator";
+import ExercisePreview from "../components/ExercisePreview";
 import GoBack from "../components/GoBack";
 import { Stack, Box, Container, TextField } from "@mui/material";
 
@@ -9,7 +9,7 @@ const DATA = {
   correct: ["1"],
 };
 
-function AnswerPage(props) {
+function ExerciseCreatorPage(props) {
   return (
     <Box
       maxWidth="100%"
@@ -52,7 +52,7 @@ function AnswerPage(props) {
               color: "#003063",
             }}
           />
-          <AnswerCreator exercise={DATA} />
+          <ExerciseCreator exercise={DATA} />
         </Stack>
       </Container>
       <Container
@@ -66,10 +66,10 @@ function AnswerPage(props) {
           alignItems: "center",
         }}
       >
-        <AnswerPreview exercise={DATA} />
+        <ExercisePreview exercise={DATA} />
       </Container>
     </Box>
   );
 }
 
-export default AnswerPage;
+export default ExerciseCreatorPage;
