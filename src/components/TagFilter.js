@@ -62,7 +62,6 @@ function TagFilter(props) {
     const obj = checked;
     obj[option] = !obj[option];
     setChecked(obj);
-    console.log(obj);
   };
 
   return (

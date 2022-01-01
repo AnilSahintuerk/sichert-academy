@@ -23,7 +23,7 @@ import {
   Container,
   Slider,
 } from "@mui/material";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 function Videoplayer(props) {
   const videoRef = useRef();
