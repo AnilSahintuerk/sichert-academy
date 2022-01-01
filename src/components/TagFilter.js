@@ -11,27 +11,43 @@ import {
   FormGroup,
   FormControlLabel,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function TagFilter() {
+function TagFilter(props) {
   let [status, setStatus] = useState("inactive");
   let [dialog, setDialog] = useState(false);
+  const [checked, setChecked] = useState({});
+  // Sichert2021: false,
+  // Ankündigungen: false,
+  // FFC: false,
+  // Kabelverzweiger: false,
+  // test: "",
 
-  const onClickHandler = () => {
-    setStatus("active");
+  // useEffect(() => {
+  //   onDeleteHanlder();
+  // }, []);
+
+  const onClickHandler = (e) => {
     setDialog(true);
   };
 
   const onDeleteHanlder = () => {
     setStatus("inactive");
+    const checkboxState = {};
+    for (const option of props.options) {
+      checkboxState[option] = false;
+    }
+    setChecked(checkboxState);
   };
 
-  const closeDialog = () => {
+  const onCancel = () => {
     setDialog(false);
+    setStatus("inactive");
   };
 
-  const okayHandler = () => {
+  const okayHandler = (value) => {
     setDialog(false);
+    setStatus("active");
   };
 
   const statusHandler = () => {
@@ -42,19 +58,26 @@ function TagFilter() {
     }
   };
 
+  const onChangeHandler = (e, option) => {
+    const obj = checked;
+    obj[option] = !obj[option];
+    setChecked(obj);
+    console.log(obj);
+  };
+
   return (
     <Box>
       <Chip
-        label="Tag"
+        label={props.name}
         onClick={onClickHandler}
-        onDelete={onDeleteHanlder}
+        onDelete={status === "active" ? onDeleteHanlder : ""}
         sx={{
           backgroundColor: statusHandler,
           color: "#fff",
           padding: "1em",
         }}
       ></Chip>
-      <Dialog open={dialog} maxWidth="xs">
+      <Dialog open={dialog} maxWidth="sm" fullWidth>
         <DialogTitle> Abteilungen </DialogTitle>
         <DialogContent>
           <Stack
@@ -62,13 +85,21 @@ function TagFilter() {
             alignItems="flex-start"
             sx={{ marginBottom: 2 }}
           >
-            <FormGroup>
-              <FormControlLabel control={<Checkbox />} label="hello" />
-              <FormControlLabel control={<Checkbox />} label="hello" />
-            </FormGroup>
+            {props.options.map((option, index) => (
+              <FormControlLabel
+                label={option}
+                control={
+                  <Checkbox
+                    onChange={(e) => onChangeHandler(e, option)}
+                    checked={checked[option]}
+                    key={index}
+                  />
+                }
+              />
+            ))}
           </Stack>
           <DialogActions>
-            <Button color="secondary" onClick={closeDialog}>
+            <Button color="secondary" onClick={onCancel}>
               Cancel
             </Button>
             <Button onClick={okayHandler}>Okay</Button>

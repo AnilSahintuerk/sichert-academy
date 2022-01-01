@@ -4,6 +4,7 @@ import { Box } from "@mui/system";
 import Navbar from "./components/Navbar";
 import ExerciseCreatorPage from "./pages/ExerciseCreatorPage";
 import HomePage from "./pages/HomePage";
+import SearchVideoPage from "./pages/SearchVideoPage";
 
 const theme = createTheme({
   palette: {
@@ -42,14 +43,39 @@ const lecture = {
   id: "0",
   title: "Hello World",
   description: "kurze beschreibung",
-  time: "03:04",
+  duration: "03:04",
   src: "4.jpg",
+  tags: ["tag1", "tag2"],
   teacher: {
     name: "Martina",
     id: "2",
     src: "2.png",
   },
 };
+
+const tagFilterData = [
+  {
+    name: "Abteilung",
+    options: [
+      "Einkauf",
+      "Arbeitsvorbereitung",
+      "IT",
+      "Human Resource",
+      "Lager",
+      "Logistik",
+      "Qualitätssicherung",
+      "Technische Entwicklung",
+    ],
+  },
+  {
+    name: "Tags",
+    options: ["Sichert2021", "Ankündigungen", "FFC", "Kabelverzweiger"],
+  },
+  {
+    name: "Software",
+    options: ["Rheiner", "Infra", "Windchill", "Personio"],
+  },
+];
 
 function App() {
   return (
@@ -67,7 +93,7 @@ function App() {
           {/* <Box sx={{ border: "1px solid red", padding: "20px" }}> */}
           {/* <Preview /> */}
           <Navbar />
-          <HomePage />
+          <SearchVideoPage lecture={lecture} tags={tagFilterData} />
         </Box>
       </div>
     </ThemeProvider>

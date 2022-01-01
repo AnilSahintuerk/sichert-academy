@@ -17,7 +17,7 @@ function LecturePreview(props) {
         maxHeight: "630px",
         borderRadius: "8px",
         position: "relative",
-        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        boxShadow: "0px 16px 32px rgba(0, 0, 0, 0.3)",
       }}
     >
       <CardMedia
@@ -37,7 +37,7 @@ function LecturePreview(props) {
         }}
       ></Avatar>
       <CardContent sx={{ margin: "32px 16px" }}>
-        <stack
+        <Stack
           sx={{
             flexDirection: "column",
             display: "flex",
@@ -90,7 +90,7 @@ function LecturePreview(props) {
           <Button variant="contained" color="sichert">
             Ansehen
           </Button>
-        </stack>
+        </Stack>
       </CardContent>
     </Card>
   );
