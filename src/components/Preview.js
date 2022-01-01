@@ -51,9 +51,18 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import Navbar from "./Navbar";
 import TextSnippetIcon from "@mui/icons-material/TextSnippet";
 import Faq from "./Faq";
+import NoteBlock from "./NoteBlock";
+
+const Data = {
+  id: "1",
+  notes: [
+    { index: 0, content: "test 1", timestamp: "00:32" },
+    { index: 1, content: "test 2", timestamp: "01:59" },
+  ],
+};
 
 function Preview(props) {
-  return <Navbar></Navbar>;
+  return <NoteBlock></NoteBlock>;
 }
 
 export default Preview;

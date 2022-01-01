@@ -5,6 +5,9 @@ import Navbar from "./components/Navbar";
 import ExerciseCreatorPage from "./pages/ExerciseCreatorPage";
 import HomePage from "./pages/HomePage";
 import SearchVideoPage from "./pages/SearchVideoPage";
+import VideoPage from "./pages/VideoPage";
+import FaqPage from "./pages/FaqPage";
+import CurriculumCreator from "./pages/CurriculumCreator";
 
 const theme = createTheme({
   palette: {
@@ -90,10 +93,10 @@ function App() {
             maxWidth: "100%",
           }}
         >
-          {/* <Box sx={{ border: "1px solid red", padding: "20px" }}> */}
-          {/* <Preview /> */}
+          {/* <Box sx={{ border: "1px solid red", padding: "20px" }}>
+            <Preview /> */}
           <Navbar />
-          <SearchVideoPage lecture={lecture} tags={tagFilterData} />
+          <CurriculumCreator lecture={lecture} tags={tagFilterData} />
         </Box>
       </div>
     </ThemeProvider>

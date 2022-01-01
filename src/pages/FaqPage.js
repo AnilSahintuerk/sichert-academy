@@ -4,6 +4,7 @@ import {
   Box,
   Container,
   TextField,
+  Avatar,
   Typography,
   Button,
 } from "@mui/material";
@@ -116,6 +117,19 @@ function FaqPage(props) {
               erwähnt. Ich weiß leider nicht was das ist und habe gehofft Sie
               können dies nochmal etwas genauer für mich erklären. MFG
             </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                gap: "8px",
+                alignItems: "center",
+                mt: "32px",
+              }}
+            >
+              <Typography variant="caption" color="secondary">
+                Frage gestellt von:
+              </Typography>
+              <Avatar src="2.png" sx={{ height: "50px", width: "50px" }} />
+            </Box>
           </Box>
           <Videoplayer></Videoplayer>
           <FaqAnswer />
@@ -132,7 +146,6 @@ function FaqPage(props) {
               height: "500px",
               width: "200px",
               position: "absolute",
-              border: "1px solid green",
               display: "flex",
               background: "#F1F0F4",
               justifyContent: "center",

@@ -13,6 +13,14 @@ Noteblock - Object
 })
  */
 
+const Data = {
+  id: "1",
+  notes: [
+    { index: 0, content: "test 1", timestamp: "00:32" },
+    { index: 1, content: "test 2", timestamp: "01:59" },
+  ],
+};
+
 function HideOnScroll(props) {
   const { children, window } = props;
 
@@ -24,6 +32,8 @@ function HideOnScroll(props) {
 }
 
 function NoteBlock(props) {
+  props = Data;
+  console.log(props);
   return (
     <Box
       sx={{
@@ -71,11 +81,11 @@ function NoteBlock(props) {
             zIndex: "-1",
           }}
         ></Box>
-        {props.noteblockData.notes.map((x) => (
+        {props.notes.map((note) => (
           <Note
-            content={x.content}
-            index={x.index}
-            timestamp={x.timestamp}
+            content={note.content}
+            index={note.index}
+            timestamp={note.timestamp}
             skipToTimestamp={props.skipToTimestamp}
           />
         ))}

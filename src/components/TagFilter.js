@@ -87,6 +87,7 @@ function TagFilter(props) {
             {props.options.map((option, index) => (
               <FormControlLabel
                 label={option}
+                key={index}
                 control={
                   <Checkbox
                     onChange={(e) => onChangeHandler(e, option)}

@@ -4,6 +4,7 @@ import VideoCardStatic from "../components/VideoCardStatic";
 import SearchBar from "../components/SearchBar";
 import TagFilter from "../components/TagFilter";
 import LecturePreview from "../components/LecturePreview";
+import SearchAndFilter from "../components/SearchAndFilter";
 
 function SearchVideoPage(props) {
   return (
@@ -28,24 +29,7 @@ function SearchVideoPage(props) {
           background: "#fff",
         }}
       >
-        <Box sx={{ height: "160px", marginTop: "32px" }}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "baseline",
-              gap: "32px",
-            }}
-          >
-            {/* <GoBack /> */}
-            <SearchBar />
-            <Box sx={{ display: "flex", gap: "16px" }}>
-              {props.tags.map((tag) => (
-                <TagFilter name={tag.name} options={tag.options} />
-              ))}
-            </Box>
-          </Box>
-        </Box>
+        <SearchAndFilter direction="row" />
         <Grid container spacing={5}>
           <Grid item>
             <VideoCardStatic lecture={props.lecture} />
