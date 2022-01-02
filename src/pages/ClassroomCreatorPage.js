@@ -1,11 +1,9 @@
 import {
-  Stack,
   Typography,
   Box,
   Button,
   Divider,
   Container,
-  Fab,
   Grid,
 } from "@mui/material";
 import GoBack from "../components/GoBack";
@@ -65,7 +63,7 @@ function CurriculumCreator(props) {
         }}
       >
         <GoBack />
-        <SearchAndFilter tags={props.tags} direction="column" />
+        <SearchAndFilter direction="column" />
       </Container>
       <Container
         maxWidth="40%"

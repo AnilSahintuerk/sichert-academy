@@ -7,7 +7,8 @@ import HomePage from "./pages/HomePage";
 import SearchVideoPage from "./pages/SearchVideoPage";
 import VideoPage from "./pages/VideoPage";
 import FaqPage from "./pages/FaqPage";
-import CurriculumCreator from "./pages/CurriculumCreator";
+import ClassroomCreatorPage from "./pages/ClassroomCreatorPage";
+import CurriculumCreatorPage from "./pages/CurriculumCreatorPage";
 
 const theme = createTheme({
   palette: {
@@ -96,7 +97,7 @@ function App() {
           {/* <Box sx={{ border: "1px solid red", padding: "20px" }}>
             <Preview /> */}
           <Navbar />
-          <CurriculumCreator lecture={lecture} tags={tagFilterData} />
+          <CurriculumCreatorPage lecture={lecture} />
         </Box>
       </div>
     </ThemeProvider>

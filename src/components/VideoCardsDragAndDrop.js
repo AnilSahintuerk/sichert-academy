@@ -31,6 +31,33 @@ const DATA = [
     tag: "Kurse",
     time: "02:05",
   },
+  {
+    id: "3",
+    teacher: "Dieter Müller",
+    src: "logo192.png",
+    title: "Kurs 1",
+    body: "Hier geht es um Kurse",
+    tag: "Kurse",
+    time: "06:05",
+  },
+  {
+    id: "4",
+    teacher: "Tina Schmidt",
+    src: "3.jpeg",
+    title: "Kurs 2",
+    body: "Hier geht es um Kurse",
+    tag: "Kurse",
+    time: "02:05",
+  },
+  {
+    id: "5",
+    teacher: "Martina Müller",
+    src: "2.png",
+    title: "Kurs 3",
+    body: "Hier geht es um Kurse",
+    tag: "Kurse",
+    time: "02:05",
+  },
 ];
 
 function VideoCardsDragAndDrop() {
