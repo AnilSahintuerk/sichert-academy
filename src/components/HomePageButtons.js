@@ -8,6 +8,7 @@ function HomePageButton(props) {
         p: "0 ",
         fontWeight: "600",
       }}
+      onClick={props.onClick}
     >
       <Paper
         elevation={10}

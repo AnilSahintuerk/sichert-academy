@@ -10,6 +10,7 @@ import {
 function VideoCardStatic(props) {
   return (
     <Card
+      onClick={props.onClick}
       sx={{
         width: "285px",
         height: "245px",
@@ -27,7 +28,7 @@ function VideoCardStatic(props) {
     >
       <CardMedia
         component="img"
-        image={props.lecture.src}
+        image={props.lecture.thumb}
         alt={props.lecture.title}
         height="165"
         sx={{

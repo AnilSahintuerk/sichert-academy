@@ -1,6 +1,8 @@
 import Preview from "./components/Preview";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Route, Routes } from "react-router-dom";
 import { Box } from "@mui/system";
+import Router from "react-dom";
 import Navbar from "./components/Navbar";
 import ExerciseCreatorPage from "./pages/ExerciseCreatorPage";
 import HomePage from "./pages/HomePage";
@@ -9,6 +11,7 @@ import VideoPage from "./pages/VideoPage";
 import FaqPage from "./pages/FaqPage";
 import ClassroomCreatorPage from "./pages/ClassroomCreatorPage";
 import CurriculumCreatorPage from "./pages/CurriculumCreatorPage";
+import LectureRequestPage from "./pages/LectureRequestPage";
 
 const theme = createTheme({
   palette: {
@@ -57,48 +60,22 @@ const lecture = {
   },
 };
 
-const tagFilterData = [
-  {
-    name: "Abteilung",
-    options: [
-      "Einkauf",
-      "Arbeitsvorbereitung",
-      "IT",
-      "Human Resource",
-      "Lager",
-      "Logistik",
-      "Qualitätssicherung",
-      "Technische Entwicklung",
-    ],
-  },
-  {
-    name: "Tags",
-    options: ["Sichert2021", "Ankündigungen", "FFC", "Kabelverzweiger"],
-  },
-  {
-    name: "Software",
-    options: ["Rheiner", "Infra", "Windchill", "Personio"],
-  },
-];
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Box
-          maxWidth="99%"
-          className="noScroll"
-          sx={{
-            height: "100vh",
-            position: "relative",
-            maxWidth: "100%",
-          }}
-        >
-          {/* <Box sx={{ border: "1px solid red", padding: "20px" }}>
-            <Preview /> */}
-          <Navbar />
-          <CurriculumCreatorPage lecture={lecture} />
-        </Box>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/kurs_anfragen" element={<LectureRequestPage />} />
+          <Route path="/klasse_erstellen" element={<ClassroomCreatorPage />} />
+          <Route path="/video_suchen" element={<SearchVideoPage />} />
+          <Route path="/fragen_beantworten" element={<FaqPage />} />
+          <Route
+            path="/lehrplan_erstellen"
+            element={<CurriculumCreatorPage />}
+          />
+        </Routes>
       </div>
     </ThemeProvider>
   );

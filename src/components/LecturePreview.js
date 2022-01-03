@@ -14,7 +14,7 @@ function LecturePreview(props) {
       sx={{
         width: "375px",
         height: "auto",
-        maxHeight: "630px",
+        maxHeight: "auto",
         borderRadius: "8px",
         position: "relative",
         boxShadow: "0px 16px 32px rgba(0, 0, 0, 0.3)",
@@ -22,17 +22,17 @@ function LecturePreview(props) {
     >
       <CardMedia
         component="img"
-        src="4.jpg"
-        sx={{ maxHeight: "35%" }}
+        src={props.lecture.thumb}
+        sx={{ maxHeight: "300px" }}
       ></CardMedia>
       <Avatar
-        src="2.png"
+        src={props.lecture.teacher.src}
         sx={{
           width: "96px",
           height: "96px",
           position: "absolute",
           right: "15px",
-          top: "25%",
+          top: "23%",
           border: "2px solid white",
         }}
       ></Avatar>
@@ -64,7 +64,7 @@ function LecturePreview(props) {
             {props.lecture.description}
           </Typography>
           <Stack direction="row" spacing={1}>
-            {props.lecture.tags.map((x) => (
+            {props.lecture.tags.map((tag) => (
               <Typography
                 sx={{
                   color: "#563E5D",
@@ -73,7 +73,7 @@ function LecturePreview(props) {
                   marginBottom: "4px",
                 }}
               >
-                #{x}
+                #{tag}
               </Typography>
             ))}
           </Stack>
@@ -82,15 +82,15 @@ function LecturePreview(props) {
               color: "#563E5D",
               fontSize: "14px",
               fontWeight: "300",
-              marginBottom: "48px",
+              marginBottom: "32px",
             }}
           >
             {props.lecture.duration}
           </Typography>
-          <Button variant="contained" color="sichert">
-            Ansehen
-          </Button>
         </Stack>
+        <Button variant="contained" color="sichert">
+          Ansehen
+        </Button>
       </CardContent>
     </Card>
   );

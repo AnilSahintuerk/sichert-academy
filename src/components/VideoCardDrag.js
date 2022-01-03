@@ -25,7 +25,7 @@ function VideoCardDrag(props) {
     >
       <CardMedia
         component="img"
-        src={props.lecture.src}
+        src={props.lecture.thumb}
         alt="hier img"
         sx={{
           width: 145,

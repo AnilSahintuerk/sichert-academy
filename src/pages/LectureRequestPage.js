@@ -15,45 +15,15 @@ import StudentCard from "../components/StudentCard";
 import SearchAndFilter from "../components/SearchAndFilter";
 import { useState } from "react";
 import { CardMedia } from "@mui/material";
+import teachersData from "../data/TeachersData";
 
-const allTeacherData = [
-  {
-    id: "0",
-    src: "2.png",
-    name: "Jane",
-    surname: "Schmitt",
-    tags: ["Einkauf", "Director"],
-    numVideos: "3",
-  },
-  {
-    id: "1",
-    src: "3.jpeg",
-    name: "Kurt",
-    surname: "Krömer",
-    tags: ["IT", "teacher"],
-    numVideos: "1",
-  },
-  {
-    id: "2",
-    src: "4.jpg",
-    name: "Wolfgang",
-    surname: "Luder",
-    tags: ["Buchhaltung", "teacher"],
-    numVideos: "2",
-  },
-  {
-    id: "3",
-    src: "logo192.png",
-    name: "Atom",
-    surname: "Bombe",
-    tags: ["Physik", "teacher"],
-    numVideos: "18",
-  },
-];
+const allTeacherData = teachersData;
 
 function LectureRequestPage(props) {
   const [allTeachers, setAllTeachers] = useState(allTeacherData);
   const [preview, setPreview] = useState({});
+
+  console.log(allTeacherData);
 
   const onClickHandler = (e, id) => {
     const teacherIndex = allTeachers.findIndex((x) => x.id === id);
@@ -110,17 +80,17 @@ function LectureRequestPage(props) {
           </Typography>
         </Box>
         <Grid container spacing={2}>
-          {allTeachers.map((student) => (
+          {allTeachers.map((teachers) => (
             <Grid
-              key={student.id}
+              key={teachers.id}
               item
               xs={2}
-              onClick={(e) => onClickHandler(e, student.id)}
+              onClick={(e) => onClickHandler(e, teachers.id)}
             >
               <StudentCard
-                src={student.src}
-                name={student.name}
-                surname={student.surname}
+                src={teachers.src}
+                name={teachers.name}
+                surname={teachers.surname}
               />
             </Grid>
           ))}
@@ -148,11 +118,7 @@ function LectureRequestPage(props) {
             justifyContent: "center",
             m: "16px 0",
           }}
-        >
-          <Typography variant="h6" color="primary">
-            Preview
-          </Typography>
-        </Box>
+        ></Box>
         <Box
           sx={{
             display: "flex",
@@ -161,7 +127,6 @@ function LectureRequestPage(props) {
             mt: "48px",
           }}
         >
-          {console.log(preview)}
           {Object.keys(preview).length === 0 ? (
             <Box />
           ) : (
@@ -186,9 +151,7 @@ function LectureRequestPage(props) {
                 }}
               >
                 <Box sx={{ display: "flex", gap: "8px" }}>
-                  {preview.tags.map((tag, index) => (
-                    <Chip label={tag} key={index} color="tertiary" />
-                  ))}
+                  <Chip label={preview.department} color="tertiary" />
                 </Box>
 
                 <Typography variant="h5" color="sichert">
@@ -215,7 +178,8 @@ function LectureRequestPage(props) {
                   color="secondary"
                   sx={{ mt: "16px", mr: "8px" }}
                 >
-                  {preview.numVideos} Videos
+                  {preview.numVideos +
+                    (preview.numVideos === "1" ? " Video" : " Videos")}
                 </Typography>
               </Box>
             </Card>

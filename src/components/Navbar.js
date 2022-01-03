@@ -1,9 +1,16 @@
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import HomeIcon from "@mui/icons-material/Home";
-import { Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { IconButton, Typography } from "@mui/material";
 
 function Navbar() {
+  let navigate = useNavigate();
+
+  const goBackHome = () => {
+    navigate("/");
+  };
+
   return (
     <Box
       sx={{
@@ -16,13 +23,16 @@ function Navbar() {
         alignItems: "center",
       }}
     >
-      <HomeIcon
-        sx={{ fontSize: "30px", paddingLeft: "20px", color: "#fff" }}
-      ></HomeIcon>
+      <IconButton
+        onClick={goBackHome}
+        sx={{ fontSize: "30px", ml: "20px", color: "#fff" }}
+      >
+        <HomeIcon></HomeIcon>
+      </IconButton>
       <Typography variant="h5" sx={{ color: "#fff" }}>
         Sichert Academy
       </Typography>
-      <Button sx={{ color: "#fff" }}>Mein Konto</Button>
+      <Button sx={{ color: "#fff", mr: "20px" }}>Mein Konto</Button>
     </Box>
   );
 }

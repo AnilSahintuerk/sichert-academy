@@ -46,7 +46,7 @@ function DescriptionBox(props) {
       </Box>
       <Stack sx={{ p: "16px 16px", gap: "32px", overflowY: "scroll" }}>
         <Typography variant="body1" color="tertiary.main">
-          {lecture.description}
+          {props.lecture.description}
         </Typography>
         <Stack sx={{ gap: "8px" }}>
           <Typography variant="h6" color="primary">
