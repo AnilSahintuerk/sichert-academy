@@ -6,16 +6,6 @@ import {
   CardMedia,
   Box,
 } from "@mui/material";
-import { withStyles } from "@material-ui/core/styles";
-
-/*
-props:
-src - image path
-title
-body
-time
-tag
-*/
 
 function VideoCardDrag(props) {
   return (
