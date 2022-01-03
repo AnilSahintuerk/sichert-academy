@@ -17,7 +17,7 @@ time
 tag
 */
 
-function VideoCardDrag(props.lecture) {
+function VideoCardDrag(props) {
   return (
     <Card
       sx={{
