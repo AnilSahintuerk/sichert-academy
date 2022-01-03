@@ -17,7 +17,7 @@ time
 tag
 */
 
-function VideoCardDrag(props) {
+function VideoCardDrag(props.lecture) {
   return (
     <Card
       sx={{
@@ -35,7 +35,7 @@ function VideoCardDrag(props) {
     >
       <CardMedia
         component="img"
-        src={props.src}
+        src={props.lecture.src}
         alt="hier img"
         sx={{
           width: 145,
@@ -64,24 +64,26 @@ function VideoCardDrag(props) {
           }}
         >
           <Typography variant="h6" align="left" color="#fff">
-            {props.title}
+            {props.lecture.title}
           </Typography>
           <Typography variant="body2" align="left" color="#fff">
-            {props.body}
+            {props.lecture.description}
           </Typography>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography variant="subtitle2" color="#BDC7DC">
-              {props.teacher}
+              {props.lecture.teacher}
             </Typography>
             <Typography
               sx={{ fontSize: "12px", fontWeight: "600" }}
               color="#A1ABC0"
             >
-              {props.time}
+              {props.lecture.duration}
             </Typography>
-            <Typography variant="caption" color="#F8D8FE">
-              {props.tag}
-            </Typography>
+            {props.lecture.tags.map((tag) => (
+              <Typography variant="caption" color="#F8D8FE">
+                {props.lecture.tag}
+              </Typography>
+            ))}
           </Box>
         </CardContent>
       </Box>

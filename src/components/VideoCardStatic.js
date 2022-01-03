@@ -7,29 +7,6 @@ import {
   CardMedia,
 } from "@mui/material";
 
-/*
-lecture:{
-    id:
-    title:
-    description:
-    time:
-    tags:{
-        tag1..
-    }
-    goals:{
-        goal1 ...
-    }
-    src
-    teacher:{
-        id:
-        name:
-        src:
-    }
- 
-}
-
-*/
-
 function VideoCardStatic(props) {
   return (
     <Card

@@ -46,24 +46,17 @@ function DescriptionBox(props) {
       </Box>
       <Stack sx={{ p: "16px 16px", gap: "32px", overflowY: "scroll" }}>
         <Typography variant="body1" color="tertiary.main">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren, no sea takimata
+          {lecture.description}
         </Typography>
         <Stack sx={{ gap: "8px" }}>
           <Typography variant="h6" color="primary">
             Lernziele
           </Typography>
-          <Typography variant="body1" color="primary">
-            - Lernziel 1
-          </Typography>
-          <Typography variant="body1" color="primary">
-            - Lernziel 2
-          </Typography>
-          <Typography variant="body1" color="primary">
-            - Lernziel 3
-          </Typography>
+          {props.lecture.tags.map((tag) => (
+            <Typography variant="body1" color="primary">
+              {tag}
+            </Typography>
+          ))}
         </Stack>
       </Stack>
     </Stack>

@@ -1,4 +1,4 @@
-import { Typography, Box, Stack, Paper } from "@mui/material";
+import { Stack, Paper } from "@mui/material";
 import LabelHeader from "./LabelHeader";
 
 const LABELS = [
@@ -12,7 +12,7 @@ const LABELS = [
   },
 ];
 
-function ExerciseElements(props) {
+function ExerciseElements() {
   return LABELS.map((Label, index) => (
     <Stack
       key={index}

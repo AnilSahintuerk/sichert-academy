@@ -8,24 +8,14 @@ import {
   DialogTitle,
   DialogContent,
   Checkbox,
-  FormGroup,
   FormControlLabel,
 } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function TagFilter(props) {
   let [status, setStatus] = useState("inactive");
   let [dialog, setDialog] = useState(false);
   const [checked, setChecked] = useState({});
-  // Sichert2021: false,
-  // Ankündigungen: false,
-  // FFC: false,
-  // Kabelverzweiger: false,
-  // test: "",
-
-  // useEffect(() => {
-  //   onDeleteHanlder();
-  // }, []);
 
   const onClickHandler = (e) => {
     setDialog(true);

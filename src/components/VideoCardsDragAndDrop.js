@@ -135,8 +135,12 @@ function VideoCardsDragAndDrop() {
                 ref={provided.innerRef}
                 sx={{ minHeight: "500px", minWidth: "500px" }}
               >
-                {allCards.map((x, index) => (
-                  <Draggable key={x.id} draggableId={x.id} index={index}>
+                {allCards.map((lecture, index) => (
+                  <Draggable
+                    key={lecture.id}
+                    draggableId={lecture.id}
+                    index={index}
+                  >
                     {(provided) => (
                       <Box
                         {...provided.draggableProps}
@@ -144,15 +148,7 @@ function VideoCardsDragAndDrop() {
                         {...provided.dragHandleProps}
                         sx={{ margin: "8px 0px" }}
                       >
-                        <VideoCardDrag
-                          src={x.src}
-                          id={x.id}
-                          title={x.title}
-                          body={x.body}
-                          tag={x.tag}
-                          time={x.time}
-                          teacher={x.teacher}
-                        />
+                        <VideoCardDrag lecture={lecture} />
                       </Box>
                     )}
                   </Draggable>
