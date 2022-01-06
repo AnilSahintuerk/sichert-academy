@@ -1,4 +1,5 @@
-import { Typography, Box, Stack, Slide, List, ListItem } from "@mui/material";
+import { TextField } from "@mui/material";
+import { Typography, Box, Stack, Slide, Container } from "@mui/material";
 import Note from "./Note";
 /* 
 A Notblock Contains multiple Notes
@@ -18,6 +19,8 @@ const Data = {
   notes: [
     { index: 0, content: "test 1", timestamp: "00:32" },
     { index: 1, content: "test 2", timestamp: "01:59" },
+    { index: 2, content: "test 3", timestamp: "02:39" },
+    { index: 3, content: "test 5", timestamp: "02:59" },
   ],
 };
 
@@ -32,15 +35,12 @@ function HideOnScroll(props) {
 }
 
 function NoteBlock(props) {
-  props = Data;
-  console.log(props);
   return (
     <Box
       sx={{
         position: "relative",
         width: "30%",
         height: "100%",
-        maxHeight: "540px",
         zIndex: "10",
         display: "flex",
         flexDirection: "column",
@@ -65,23 +65,23 @@ function NoteBlock(props) {
         sx={{
           flexDirection: "column",
           overflowY: "scroll",
-          maxHeight: "30%",
+          height: "100%",
         }}
       >
         <Box
           sx={{
             background: "#E3E2E6",
             minWidth: "20%",
-            height: "100%",
+            height: "150%",
             position: "absolute",
             top: "60px",
             left: "0",
             width: "20%",
-            height: "89%",
             zIndex: "-1",
           }}
         ></Box>
-        {props.notes.map((note) => (
+        {/* Data := props */}
+        {Data.notes.map((note) => (
           <Note
             content={note.content}
             index={note.index}

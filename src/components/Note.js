@@ -15,11 +15,17 @@ Noteblock - Object
 
 function Note(props) {
   return (
-    <Stack direction="row" sx={{ width: "100%", flex: "1 0 auto" }}>
+    <Stack
+      direction="row"
+      sx={{
+        width: "100%",
+        flex: "1 0 auto",
+      }}
+    >
       <Box
         sx={{
           minWidth: "20%",
-          height: "auto",
+          height: "100%",
           flex: "1",
         }}
       >

@@ -13,8 +13,12 @@ import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import Faq from "../components/Faq";
 import VideoCardStatic from "../components/VideoCardStatic";
 import DescriptionBox from "../components/DescriptionBox";
+import lecturesData from "../data/LecturesData";
+import { useState } from "react";
 
 function VideoPage(props) {
+  const [descBoxActive, setDescBoxActive] = useState(true);
+
   return (
     <Box
       maxWidth="100%"
@@ -42,11 +46,14 @@ function VideoPage(props) {
       >
         <GoBack />
         <Box>
-          <Videoplayer />
+          <Videoplayer
+            lecture={props.lecture}
+            descBoxHandler={setDescBoxActive}
+          />
         </Box>
         <Box sx={{ padding: "16px 80px" }}>
           <Typography sx={{ fontSize: "32px", color: "#001B3D", mb: "32px" }}>
-            Video Title
+            {props.lecture.title}
           </Typography>
           <Divider sx={{ mb: "16px" }} />
           <Box
@@ -63,8 +70,13 @@ function VideoPage(props) {
                 alignItems: "center",
               }}
             >
-              <Avatar src="2.png" sx={{ height: "75px", width: "75px" }} />
-              <Typography>Teacher Name</Typography>
+              <Avatar
+                src={props.lecture.teacher.src}
+                sx={{ height: "75px", width: "75px" }}
+              />
+              <Typography>
+                {props.lecture.teacher.name} {props.lecture.teacher.surname}
+              </Typography>
             </Box>
             <Button sx={{ gap: "8px" }}>
               <QuestionMarkIcon fontSize="small" />
@@ -77,37 +89,41 @@ function VideoPage(props) {
               alignItems: "center",
               width: "100%",
               gap: "128px",
-              mt: "128px",
+              mt: "210px",
             }}
           >
-            <Faq />
-            <Stack alignItems="center" spacing={3}>
+            {/* <Faq /> */}
+            <Stack alignItems="center" spacing={10}>
               <Typography variant="h5" color="secondary">
                 Ähnliche Videos
               </Typography>
               <Box sx={{ display: "flex", gap: "16px" }}>
-                <VideoCardStatic lecture={props.lecture} />
-                <VideoCardStatic lecture={props.lecture} />
-                <VideoCardStatic lecture={props.lecture} />
+                <VideoCardStatic lecture={lecturesData[9]} />
+                <VideoCardStatic lecture={lecturesData[2]} />
+                <VideoCardStatic lecture={lecturesData[6]} />
               </Box>
             </Stack>
           </Stack>
         </Box>
       </Container>
-      <Container
-        maxWidth="45%"
-        sx={{
-          height: "100vh",
-          width: "25vw",
-          background: "#FDFCFF",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          mt: "7%",
-        }}
-      >
-        <DescriptionBox />
-      </Container>
+      {descBoxActive ? (
+        <Container
+          maxWidth="45%"
+          sx={{
+            height: "100vh",
+            width: "25vw",
+            background: "#FDFCFF",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            mt: "7%",
+          }}
+        >
+          <DescriptionBox lecture={props.lecture} />
+        </Container>
+      ) : (
+        <Box />
+      )}
     </Box>
   );
 }

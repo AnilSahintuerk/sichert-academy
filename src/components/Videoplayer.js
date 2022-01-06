@@ -152,6 +152,7 @@ function Videoplayer(props) {
     } else {
       setPlayerSize("xl");
     }
+    props.descBoxHandler(description);
   };
 
   const skipToTimestamp = (timestamp) => {
@@ -161,7 +162,15 @@ function Videoplayer(props) {
   };
 
   return (
-    <Container maxWidth={playerSize} gap="0" sx={{ display: "flex", gap: "0" }}>
+    <Container
+      maxWidth={playerSize}
+      gap="0"
+      sx={{
+        display: "flex",
+        gap: "0",
+        overflowY: "hide",
+      }}
+    >
       {/* For hiding controls after hover */}
       <Box
         onMouseLeave={handleHoverLeave}
@@ -192,7 +201,7 @@ function Videoplayer(props) {
         )}
         {/* Actual Videoplayer */}
         <ReactPlayer
-          url="1.mp4"
+          url={props.lecture.src}
           width="100%"
           height="100%"
           ref={videoRef}

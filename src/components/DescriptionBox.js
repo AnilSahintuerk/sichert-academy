@@ -52,11 +52,9 @@ function DescriptionBox(props) {
           <Typography variant="h6" color="primary">
             Lernziele
           </Typography>
-          {props.lecture.tags.map((tag) => (
-            <Typography variant="body1" color="primary">
-              {tag}
-            </Typography>
-          ))}
+          <Typography variant="body1" color="primary">
+            {props.lecture.goals}
+          </Typography>
         </Stack>
       </Stack>
     </Stack>
