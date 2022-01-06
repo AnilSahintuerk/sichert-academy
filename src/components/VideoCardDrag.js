@@ -71,11 +71,20 @@ function VideoCardDrag(props) {
             >
               {props.lecture.duration}
             </Typography>
-            {props.lecture.tags.map((tag) => (
-              <Typography variant="caption" color="#F8D8FE">
-                #{tag}
-              </Typography>
-            ))}
+            <Box
+              sx={{
+                minWidth: "24px",
+                maxWidth: "200px",
+                height: "16px",
+                overflow: "hide",
+              }}
+            >
+              {props.lecture.tags.map((tag) => (
+                <Typography variant="caption" color="#F8D8FE">
+                  #{tag + " "}
+                </Typography>
+              ))}
+            </Box>
           </Box>
         </CardContent>
       </Box>

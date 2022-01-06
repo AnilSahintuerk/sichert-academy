@@ -46,6 +46,7 @@ function SearchVideoPage(props) {
                   background: "#fff",
                 }}
               >
+                <GoBack />
                 <SearchAndFilter direction="row" />
                 <Grid container spacing={8}>
                   {props.map((lecture, index) => (

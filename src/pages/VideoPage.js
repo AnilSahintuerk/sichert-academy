@@ -45,7 +45,7 @@ function VideoPage(props) {
         }}
       >
         <GoBack />
-        <Box>
+        <Box sx={{ mb: "48px" }}>
           <Videoplayer
             lecture={props.lecture}
             descBoxHandler={setDescBoxActive}
@@ -89,10 +89,10 @@ function VideoPage(props) {
               alignItems: "center",
               width: "100%",
               gap: "128px",
-              mt: "210px",
+              mt: "110px",
             }}
           >
-            {/* <Faq /> */}
+            <Faq lecture={props.lecture} />
             <Stack alignItems="center" spacing={10}>
               <Typography variant="h5" color="secondary">
                 Ähnliche Videos

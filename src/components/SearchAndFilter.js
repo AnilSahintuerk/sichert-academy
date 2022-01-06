@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import GoBack from "./GoBack";
 import SearchBar from "./SearchBar";
 import TagFilter from "./TagFilter";
 
@@ -28,13 +29,24 @@ const tags = [
 
 function SearchAndFilter(props) {
   return (
-    <Box sx={{ height: "160px", marginTop: "32px" }}>
+    <Box
+      sx={{
+        height: "160px",
+        display: "flex",
+        alignItems: "flex-start",
+        marginTop: "32px",
+        flex: "1",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "baseline",
           gap: "32px",
+          height: "100%",
+
+          flex: "1",
         }}
       >
         <SearchBar />
