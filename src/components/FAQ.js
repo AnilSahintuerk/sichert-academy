@@ -12,13 +12,13 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 const FAQ_DATA = [
   {
     id: "0",
-    question: "Wie erhebt man Daten?",
+    question: "Was bedeutet das?",
     faqAnswer: [
-      { type: "img", content: "4.jpg" },
+      { type: "img", content: "\\vid\\logo192.png" },
       {
         type: "text",
         content:
-          "Es existieren mehrere gängige Methoden Daten zu erheben eine der am häufigsten verwendeten Methoden ist die Methode der Umfrage",
+          "Lorem ipsum dolor sit amet, in usu perpetua explicari necessitatibus, nam diam altera legendos in. In duo deserunt qualisque dignissim. Cum id ludus feugait alienum, ubique tamquam persius no quo, et qui utamur officiis consulatu.",
       },
     ],
     lectureId: "0",
@@ -26,12 +26,12 @@ const FAQ_DATA = [
   },
   {
     id: "0",
-    question: "Was ist die desprektive Datenanalyse?",
+    question: "Wie nutze ich das im Alltag?",
     faqAnswer: [
       {
         type: "text",
         content:
-          "Die deskriptive (auch: beschreibende) Statistik hat zum Ziel, empirische Daten (z. B. Ergebnisse aus Experimenten) durch Tabellen, Kennzahlen (auch: Maßzahlen oder Parameter) und Grafiken übersichtlich darzustellen und zu ordnen. Dies ist vor allem bei umfangreichem Datenmaterial sinnvoll, da dieses nicht leicht überblickt werden kann.",
+          "Lorem ipsum dolor sit amet, quot primis molestiae est in. Dolor primis mei cu. Nec populo timeam commune cu, munere recusabo sed eu, salutandi explicari dissentiet sit te. Pro urbanitas similique accommodare at. Ex mei justo gubergren democritum. Ut lorem meliore appellantur sed. Ullum tation tractatos quo cu, ad sed ferri nostrum atomorum. Ex paulo indoctum persecuti vel, lorem vituperata no vis. Mei facer liberavisse ne. Ea mucius efficiantur eam.",
       },
     ],
     lectureId: "0",
@@ -68,7 +68,6 @@ const handleAnswer = (answer) => {
 };
 
 function Faq(props) {
-  props = FAQ_DATA;
   return (
     <Stack
       sx={{
@@ -85,12 +84,12 @@ function Faq(props) {
           lineHeight: "28px",
           textAlign: "left",
           color: "#000",
-          marginBottom: "16px",
+          marginBottom: "48px",
         }}
       >
-        Datenanalyse - FAQ
+        FAQ - {props.lecture.title}
       </Typography>
-      {props.map((faq) => (
+      {FAQ_DATA.map((faq) => (
         <Accordion key={faq.id} sx={{ width: "100%" }}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />} color="secondary">
             <Typography sx={{ flexShrink: 0 }}>{faq.question}</Typography>

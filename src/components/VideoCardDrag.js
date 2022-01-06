@@ -12,7 +12,7 @@ function VideoCardDrag(props) {
   return (
     <Card
       sx={{
-        width: "485px",
+        width: "585px",
         height: "128px",
         padding: "4px 0",
         paddingLeft: "8px",
@@ -29,7 +29,7 @@ function VideoCardDrag(props) {
         src={props.lecture.thumb}
         alt="hier img"
         sx={{
-          width: 145,
+          width: 185,
           height: 105,
           borderRadius: "16px",
           boxShadow: "inset 0 0 10px rgba(0, 0, 0, 0.5) ",
@@ -62,8 +62,7 @@ function VideoCardDrag(props) {
           </Typography>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography variant="subtitle2" color="#BDC7DC">
-              {props.lecture.teacher.name}
-              {props.lecture.teacher.surname}
+              {props.lecture.teacher.name} {props.lecture.teacher.surname}
             </Typography>
             <Typography
               sx={{ fontSize: "12px", fontWeight: "600" }}

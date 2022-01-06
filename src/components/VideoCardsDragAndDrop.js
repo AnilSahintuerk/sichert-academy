@@ -112,7 +112,7 @@ function VideoCardsDragAndDrop(props) {
           </Droppable>
         </Box>
         <Divider orientation="vertical" flexItem />
-        <Stack sx={{ gap: "28px" }}>
+        <Stack sx={{ gap: "28px", alignItems: "center" }}>
           <Typography variant="h4" sx={{ color: "#563E5D" }}>
             Lehrplan
           </Typography>

@@ -12,6 +12,7 @@ import FaqPage from "./pages/FaqPage";
 import ClassroomCreatorPage from "./pages/ClassroomCreatorPage";
 import CurriculumCreatorPage from "./pages/CurriculumCreatorPage";
 import LectureRequestPage from "./pages/LectureRequestPage";
+import lecturesData from "./data/LecturesData";
 
 const theme = createTheme({
   palette: {
@@ -46,21 +47,7 @@ const theme = createTheme({
   },
 });
 
-const lecture = {
-  id: "0",
-  title: "Hello World",
-  description: "kurze beschreibung",
-  duration: "03:04",
-  src: "4.jpg",
-  tags: ["tag1", "tag2"],
-  teacher: {
-    name: "Martina",
-    id: "2",
-    src: "2.png",
-  },
-};
-
-function App() {
+function App(props) {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
@@ -69,7 +56,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/kurs_anfragen" element={<LectureRequestPage />} />
           <Route path="/klasse_erstellen" element={<ClassroomCreatorPage />} />
-          <Route path="/video_suchen" element={<SearchVideoPage />} />
+          <Route path="/video_suchen/*" element={<SearchVideoPage />}>
+            <Route path="video/:lecutre.id" />
+          </Route>
           <Route path="/fragen_beantworten" element={<FaqPage />} />
           <Route
             path="/lehrplan_erstellen"
