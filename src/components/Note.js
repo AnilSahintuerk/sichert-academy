@@ -9,9 +9,7 @@ Noteblock - Object
         - index
         - content
         - timestamp
-
-})
- */
+*/
 
 function Note(props) {
   return (

@@ -2,66 +2,10 @@ import { Box, Stack, Divider, Typography } from "@mui/material";
 import { useState } from "react";
 import VideoCardDrag from "./VideoCardDrag";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import lecturesData from "../data/LecturesData";
 
-const DATA = [
-  {
-    id: "0",
-    teacher: "Dieter Müller",
-    src: "logo192.png",
-    title: "Kurs 1",
-    body: "Hier geht es um Kurse",
-    tag: "Kurse",
-    time: "06:05",
-  },
-  {
-    id: "1",
-    teacher: "Tina Schmidt",
-    src: "3.jpeg",
-    title: "Kurs 2",
-    body: "Hier geht es um Kurse",
-    tag: "Kurse",
-    time: "02:05",
-  },
-  {
-    id: "2",
-    teacher: "Martina Müller",
-    src: "2.png",
-    title: "Kurs 3",
-    body: "Hier geht es um Kurse",
-    tag: "Kurse",
-    time: "02:05",
-  },
-  {
-    id: "3",
-    teacher: "Dieter Müller",
-    src: "logo192.png",
-    title: "Kurs 1",
-    body: "Hier geht es um Kurse",
-    tag: "Kurse",
-    time: "06:05",
-  },
-  {
-    id: "4",
-    teacher: "Tina Schmidt",
-    src: "3.jpeg",
-    title: "Kurs 2",
-    body: "Hier geht es um Kurse",
-    tag: "Kurse",
-    time: "02:05",
-  },
-  {
-    id: "5",
-    teacher: "Martina Müller",
-    src: "2.png",
-    title: "Kurs 3",
-    body: "Hier geht es um Kurse",
-    tag: "Kurse",
-    time: "02:05",
-  },
-];
-
-function VideoCardsDragAndDrop() {
-  const [allCards, updateAllCards] = useState(DATA);
+function VideoCardsDragAndDrop(props) {
+  const [allCards, updateAllCards] = useState(lecturesData);
   const [selectedCards, updateSelectedCards] = useState([]);
 
   function handleOnDragEnd(result) {
@@ -115,7 +59,13 @@ function VideoCardsDragAndDrop() {
   }
 
   return (
-    <Box sx={{ display: "flex", gap: "25px" }}>
+    <Box
+      sx={{
+        display: "flex",
+        gap: "25px",
+        justifyContent: "center",
+      }}
+    >
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Box
           sx={{
@@ -128,19 +78,21 @@ function VideoCardsDragAndDrop() {
           <Typography variant="h4" sx={{ color: "#563E5D" }}>
             Alle Kurse
           </Typography>
+
           <Droppable droppableId="start">
             {(provided) => (
               <Stack
                 {...provided.droppableProps}
                 ref={provided.innerRef}
-                sx={{ minHeight: "500px", minWidth: "500px" }}
+                sx={{
+                  minHeight: "500px",
+                  minWidth: "500px",
+                  maxHeight: "100vh",
+                  overflowY: "scroll",
+                }}
               >
-                {allCards.map((lecture, index) => (
-                  <Draggable
-                    key={lecture.id}
-                    draggableId={lecture.id}
-                    index={index}
-                  >
+                {allCards.map((x, index) => (
+                  <Draggable key={x.id} draggableId={x.id} index={index}>
                     {(provided) => (
                       <Box
                         {...provided.draggableProps}
@@ -148,7 +100,8 @@ function VideoCardsDragAndDrop() {
                         {...provided.dragHandleProps}
                         sx={{ margin: "8px 0px" }}
                       >
-                        <VideoCardDrag lecture={lecture} />
+                        {console.log(x)}
+                        <VideoCardDrag lecture={x} />
                       </Box>
                     )}
                   </Draggable>
@@ -159,54 +112,57 @@ function VideoCardsDragAndDrop() {
           </Droppable>
         </Box>
         <Divider orientation="vertical" flexItem />
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-            gap: "32px",
-          }}
-        >
+        <Stack sx={{ gap: "28px" }}>
           <Typography variant="h4" sx={{ color: "#563E5D" }}>
             Lehrplan
           </Typography>
-          <Droppable droppableId="selection">
-            {(provided) => (
-              <Stack
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                sx={{
-                  minHeight: "500px",
-                  minWidth: "500px",
-                }}
-              >
-                {selectedCards.map((x, index) => (
-                  <Draggable key={x.id} draggableId={x.id} index={index}>
-                    {(provided) => (
-                      <Box
-                        {...provided.draggableProps}
-                        ref={provided.innerRef}
-                        {...provided.dragHandleProps}
-                        sx={{ margin: "8px 0px" }}
-                      >
-                        <VideoCardDrag
-                          src={x.src}
-                          id={x.id}
-                          title={x.title}
-                          body={x.body}
-                          tag={x.tag}
-                          time={x.time}
-                          teacher={x.teacher}
-                        />
-                      </Box>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </Stack>
-            )}
-          </Droppable>
-        </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+              height: "100%",
+              minWidth: "500px",
+
+              maxHeight: "100vh",
+              overflow: "scroll",
+              gap: "32px",
+            }}
+          >
+            <Droppable droppableId="selection">
+              {(provided) => (
+                <Stack
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  sx={{
+                    minHeight: "100%",
+                    minWidth: "100%",
+                  }}
+                >
+                  {selectedCards.map((lecture, index) => (
+                    <Draggable
+                      key={lecture.id}
+                      draggableId={lecture.id}
+                      index={index}
+                    >
+                      {(provided) => (
+                        <Box
+                          {...provided.draggableProps}
+                          ref={provided.innerRef}
+                          {...provided.dragHandleProps}
+                          sx={{ margin: "8px 0px" }}
+                        >
+                          <VideoCardDrag lecture={lecture} />
+                        </Box>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </Stack>
+              )}
+            </Droppable>
+          </Box>
+        </Stack>
       </DragDropContext>
     </Box>
   );

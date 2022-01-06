@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 
 function VideoCardDrag(props) {
+  console.log(props.lecture);
   return (
     <Card
       sx={{
@@ -57,11 +58,12 @@ function VideoCardDrag(props) {
             {props.lecture.title}
           </Typography>
           <Typography variant="body2" align="left" color="#fff">
-            {props.lecture.description}
+            {props.lecture.goals}
           </Typography>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography variant="subtitle2" color="#BDC7DC">
-              {props.lecture.teacher}
+              {props.lecture.teacher.name}
+              {props.lecture.teacher.surname}
             </Typography>
             <Typography
               sx={{ fontSize: "12px", fontWeight: "600" }}
@@ -71,7 +73,7 @@ function VideoCardDrag(props) {
             </Typography>
             {props.lecture.tags.map((tag) => (
               <Typography variant="caption" color="#F8D8FE">
-                {props.lecture.tag}
+                #{tag}
               </Typography>
             ))}
           </Box>

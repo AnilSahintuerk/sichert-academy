@@ -10,8 +10,10 @@ import {
 import GoBack from "../components/GoBack";
 import VideoCardsDragAndDrop from "../components/VideoCardsDragAndDrop";
 import SearchAndFilter from "../components/SearchAndFilter";
+import lecturesData from "../data/LecturesData";
 
-function CurriculumCreatorPage() {
+function CurriculumCreatorPage(props) {
+  props = lecturesData;
   return (
     <Box
       maxWidth="100%"
@@ -66,7 +68,7 @@ function CurriculumCreatorPage() {
       </Box>
       <Box sx={{ position: "absolute", bottom: "32px", left: "16px" }}>
         <Button variant="contained" color="sichert">
-          Klasse erstellen
+          Lehrplan erstellen
         </Button>
       </Box>
     </Box>
