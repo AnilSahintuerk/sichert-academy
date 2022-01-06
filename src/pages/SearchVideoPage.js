@@ -14,6 +14,8 @@ function SearchVideoPage(props) {
 
   const activeHandler = (lecture) => {
     setActive(lecture);
+    console.log(active);
+    console.log(lecture);
   };
 
   return (
@@ -41,7 +43,7 @@ function SearchVideoPage(props) {
         <SearchAndFilter direction="row" />
         <Grid container spacing={8}>
           {props.map((lecture, index) => (
-            <Grid item xs={3} key={index}>
+            <Grid item xs={4} md={3} key={index}>
               <VideoCardStatic
                 lecture={lecture}
                 onClick={() => activeHandler(lecture)}
@@ -61,7 +63,7 @@ function SearchVideoPage(props) {
           alignItems: "center",
         }}
       >
-        <LecturePreview lecture={active} />
+        {active !== undefined ? <LecturePreview lecture={active} /> : <Box />}
       </Container>
     </Box>
   );

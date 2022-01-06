@@ -23,7 +23,7 @@ function LecturePreview(props) {
       <CardMedia
         component="img"
         src={props.lecture.thumb}
-        sx={{ maxHeight: "300px" }}
+        sx={{ maxHeight: "250px" }}
       ></CardMedia>
       <Avatar
         src={props.lecture.teacher.src}
