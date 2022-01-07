@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 
 function VideoCardDrag(props) {
-  console.log(props.lecture);
   return (
     <Card
       sx={{

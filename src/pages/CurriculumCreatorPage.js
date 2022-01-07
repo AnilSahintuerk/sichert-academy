@@ -11,9 +11,12 @@ import GoBack from "../components/GoBack";
 import VideoCardsDragAndDrop from "../components/VideoCardsDragAndDrop";
 import SearchAndFilter from "../components/SearchAndFilter";
 import lecturesData from "../data/LecturesData";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 function CurriculumCreatorPage(props) {
-  props = lecturesData;
+  props = { ...props, lecturesData };
+  const navigate = useNavigate();
+
   return (
     <Box
       maxWidth="100%"
@@ -61,13 +64,20 @@ function CurriculumCreatorPage(props) {
             Alle Schüler
           </Typography> */}
         </Box>
-        <VideoCardsDragAndDrop />
+        <VideoCardsDragAndDrop
+          selectedCards={props.selectedCards}
+          updateSelectedCards={props.updateSelectedCards}
+        />
       </Container>
       <Box sx={{ background: "neutral2.main" }}>
         <Divider orientation="vertical" />
       </Box>
       <Box sx={{ position: "absolute", bottom: "32px", left: "16px" }}>
-        <Button variant="contained" color="sichert">
+        <Button
+          variant="contained"
+          color="sichert"
+          onClick={() => navigate("neuer_lehrplan")}
+        >
           Lehrplan erstellen
         </Button>
       </Box>

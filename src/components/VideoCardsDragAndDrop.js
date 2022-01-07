@@ -6,7 +6,7 @@ import lecturesData from "../data/LecturesData";
 
 function VideoCardsDragAndDrop(props) {
   const [allCards, updateAllCards] = useState(lecturesData);
-  const [selectedCards, updateSelectedCards] = useState([]);
+  // const [props.selectedCards, props.updateSelectedCards] = useState([]);
 
   function handleOnDragEnd(result) {
     if (result.source.droppableId === result.destination.droppableId) {
@@ -16,15 +16,15 @@ function VideoCardsDragAndDrop(props) {
         items.splice(result.destination.index, 0, reorderedItem);
         updateAllCards(items);
       } else {
-        const items = Array.from(selectedCards);
+        const items = Array.from(props.selectedCards);
         const [reorderedItem] = items.splice(result.source.index, 1);
         items.splice(result.destination.index, 0, reorderedItem);
-        updateSelectedCards(items);
+        props.updateSelectedCards(items);
       }
     } else {
       if (result.source.droppableId === "start") {
         const allCardsArray = Array.from(allCards);
-        const selectedCardsArray = Array.from(selectedCards);
+        const selectedCardsArray = Array.from(props.selectedCards);
         const selectedItem = allCardsArray.find(
           (x) => x.id === result.draggableId
         );
@@ -38,10 +38,10 @@ function VideoCardsDragAndDrop(props) {
         selectedCardsArray.splice(result.destination.index, 0, selectedItem);
 
         updateAllCards(newAllCardsArray);
-        updateSelectedCards(selectedCardsArray);
+        props.updateSelectedCards(selectedCardsArray);
       } else {
         const allCardsArray = Array.from(allCards);
-        const selectedCardsArray = Array.from(selectedCards);
+        const selectedCardsArray = Array.from(props.selectedCards);
         const selectedItem = selectedCardsArray.find(
           (x) => x.id === result.draggableId
         );
@@ -53,7 +53,7 @@ function VideoCardsDragAndDrop(props) {
         const [slectedItem] = allCardsArray.splice(result.source.index, 0);
         allCardsArray.splice(result.destination.index, 0, selectedItem);
         updateAllCards(allCardsArray);
-        updateSelectedCards(newSelectedCardsArray);
+        props.updateSelectedCards(newSelectedCardsArray);
       }
     }
   }
@@ -100,7 +100,6 @@ function VideoCardsDragAndDrop(props) {
                         {...provided.dragHandleProps}
                         sx={{ margin: "8px 0px" }}
                       >
-                        {console.log(x)}
                         <VideoCardDrag lecture={x} />
                       </Box>
                     )}
@@ -123,7 +122,6 @@ function VideoCardsDragAndDrop(props) {
               flexDirection: "column",
               height: "100%",
               minWidth: "500px",
-
               maxHeight: "100vh",
               overflow: "scroll",
               gap: "32px",
@@ -139,7 +137,7 @@ function VideoCardsDragAndDrop(props) {
                     minWidth: "100%",
                   }}
                 >
-                  {selectedCards.map((lecture, index) => (
+                  {props.selectedCards.map((lecture, index) => (
                     <Draggable
                       key={lecture.id}
                       draggableId={lecture.id}
