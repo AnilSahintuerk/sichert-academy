@@ -1,20 +1,16 @@
 import Preview from "./components/Preview";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Route, Routes } from "react-router-dom";
-import { Box } from "@mui/system";
-import Router from "react-dom";
 import Navbar from "./components/Navbar";
 import ExerciseCreatorPage from "./pages/ExerciseCreatorPage";
 import HomePage from "./pages/HomePage";
 import SearchVideoPage from "./pages/SearchVideoPage";
-import VideoPage from "./pages/VideoPage";
 import FaqPage from "./pages/FaqPage";
-import ClassroomCreatorPage from "./pages/ClassroomCreatorPage";
-import CurriculumCreatorPage from "./pages/CurriculumCreatorPage";
 import LectureRequestPage from "./pages/LectureRequestPage";
 import CurriculumCreatorRouter from "./routers/CurriculumCreatorRouter";
-import lecturesData from "./data/LecturesData";
 import ClassroomCreatorRouter from "./routers/ClassroomCreatorRouter";
+import VideoUploadPage from "./pages/VideoUploadPage";
+import ExerciseSelectionPage from "./pages/ExerciseSelectionPage";
 
 const theme = createTheme({
   palette: {
@@ -58,16 +54,6 @@ function App(props) {
           <Route path="/" element={<HomePage />} />
           <Route path="/kurs_anfragen" element={<LectureRequestPage />} />
           <Route
-            path="/klasse_erstellen/*"
-            element={<ClassroomCreatorRouter />}
-          >
-            <Route path="neue_klasse/" element={<ClassroomCreatorRouter />} />
-          </Route>
-          <Route path="/video_suchen/*" element={<SearchVideoPage />}>
-            <Route path="video/" />
-          </Route>
-          <Route path="/fragen_beantworten" element={<FaqPage />} />
-          <Route
             path="/lehrplan_erstellen/*"
             element={<CurriculumCreatorRouter />}
           >
@@ -76,6 +62,23 @@ function App(props) {
               element={<CurriculumCreatorRouter />}
             />
           </Route>
+          <Route
+            path="/klasse_erstellen/*"
+            element={<ClassroomCreatorRouter />}
+          >
+            <Route path="neue_klasse/" element={<ClassroomCreatorRouter />} />
+          </Route>
+          <Route path="/video_suchen/*" element={<SearchVideoPage />}>
+            <Route path="video/" />
+          </Route>
+          <Route path="/lehrplan_verfolgen" element={<p>to be done</p>} />
+          <Route path="/fragen_beantworten" element={<FaqPage />} />
+          <Route path="/kurs_hochladen" element={<VideoUploadPage />} />
+          <Route
+            path="/aufgaben_hinzufuegen/*"
+            element={<ExerciseSelectionPage />}
+          />
+          <Route path="/mc" element={<ExerciseCreatorPage />} />
         </Routes>
       </div>
     </ThemeProvider>
