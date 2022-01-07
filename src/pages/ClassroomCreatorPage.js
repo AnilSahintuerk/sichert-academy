@@ -9,34 +9,30 @@ import {
 import GoBack from "../components/GoBack";
 import StudentCard from "../components/StudentCard";
 import SearchAndFilter from "../components/SearchAndFilter";
+import teachersData from "../data/TeachersData";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const allStudentsData = [
-  { id: "0", src: "2.png", name: "Jane", surname: "Schmitt" },
-  { id: "1", src: "3.jpeg", name: "Kurt", surname: "Krömer" },
-  { id: "2", src: "4.jpg", name: "Wolfgang", surname: "Luder" },
-  { id: "3", src: "logo192.png", name: "Atom", surname: "Bombe" },
-];
-
 function CurriculumCreator(props) {
-  const [allStudents, setAllStudents] = useState(allStudentsData);
-  const [newClass, setNewClass] = useState([]);
+  const [allStudents, setAllStudents] = useState(teachersData);
+  const navigate = useNavigate();
+  // const [props.newClass, props.setNewClass] = useState([]);
 
   const onClickHandler = (e, id) => {
     const studentIndex = allStudents.findIndex((x) => x.id === id);
     const allStudentsArray = Array.from(allStudents);
-    const newClassArray = Array.from(newClass);
+    const newClassArray = Array.from(props.newClass);
     if (studentIndex !== -1) {
       const student = allStudentsArray[studentIndex];
       allStudentsArray.splice(studentIndex, 1);
       setAllStudents(allStudentsArray);
       newClassArray.push(student);
-      setNewClass(newClassArray);
+      props.setNewClass(newClassArray);
     } else {
-      const studentIndex = newClass.findIndex((x) => x.id === id);
+      const studentIndex = props.newClass.findIndex((x) => x.id === id);
       const student = newClassArray[studentIndex];
       newClassArray.splice(studentIndex, 1);
-      setNewClass(newClassArray);
+      props.setNewClass(newClassArray);
       allStudentsArray.push(student);
       setAllStudents(allStudentsArray);
     }
@@ -46,7 +42,7 @@ function CurriculumCreator(props) {
     <Box
       maxWidth="100%"
       sx={{
-        height: "auto",
+        height: "95vh",
         display: "flex",
         overflow: "hidden",
         position: "relative",
@@ -95,6 +91,7 @@ function CurriculumCreator(props) {
               key={student.id}
               item
               xs={4}
+              sm={3}
               onClick={(e) => onClickHandler(e, student.id)}
             >
               <StudentCard
@@ -134,11 +131,12 @@ function CurriculumCreator(props) {
           </Typography>
         </Box>
         <Grid container spacing={2}>
-          {newClass.map((student) => (
+          {props.newClass.map((student) => (
             <Grid
               key={student.id}
               item
               xs={4}
+              sm={3}
               onClick={(e) => onClickHandler(e, student.id)}
             >
               <StudentCard
@@ -151,7 +149,11 @@ function CurriculumCreator(props) {
         </Grid>
       </Container>
       <Box sx={{ position: "absolute", bottom: "32px", left: "16px" }}>
-        <Button variant="contained" color="sichert">
+        <Button
+          variant="contained"
+          color="sichert"
+          onClick={() => navigate("neue_klasse")}
+        >
           Klasse erstellen
         </Button>
       </Box>

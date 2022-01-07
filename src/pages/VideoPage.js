@@ -4,6 +4,9 @@ import {
   Stack,
   Container,
   Button,
+  Modal,
+  Card,
+  TextField,
   Avatar,
   Divider,
 } from "@mui/material";
@@ -14,10 +17,14 @@ import Faq from "../components/Faq";
 import VideoCardStatic from "../components/VideoCardStatic";
 import DescriptionBox from "../components/DescriptionBox";
 import lecturesData from "../data/LecturesData";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { useState } from "react";
 
 function VideoPage(props) {
   const [descBoxActive, setDescBoxActive] = useState(true);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <Box
@@ -44,6 +51,59 @@ function VideoPage(props) {
           gap: "16px",
         }}
       >
+        <Modal
+          open={open}
+          onClose={handleClose}
+          sx={{
+            height: "100vh",
+            width: "100vw",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Card sx={{ width: "30vw", height: "auto", p: "32px" }}>
+            <Typography variant="h4" color="sichert.main" sx={{ mb: "16px" }}>
+              Frage stellen
+            </Typography>
+            <Stack spacing={5} sx={{ mb: "20%", width: "100%" }}>
+              <TextField
+                required
+                id="outlined-required"
+                label="Video Titel"
+              ></TextField>
+              <TextField id="outlined-required" label="Zeitstempel"></TextField>
+              <TextField
+                id="outlined-required"
+                label="Nachricht"
+                multiline
+                rows={6}
+              ></TextField>
+              <Box>
+                <Button sx={{ gap: "8px" }} onClick={handleOpen}>
+                  <AttachFileIcon fontSize="small" />
+                  Datei Anfügen
+                </Button>
+              </Box>
+              <Box sx={{ display: "flex", gap: "16px" }}>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={handleClose}
+                >
+                  Abbrechen
+                </Button>
+                <Button
+                  variant="contained"
+                  color="sichert"
+                  onClick={handleClose}
+                >
+                  Frage stellen
+                </Button>
+              </Box>
+            </Stack>
+          </Card>
+        </Modal>
         <GoBack />
         <Box sx={{ mb: "48px" }}>
           <Videoplayer
@@ -78,7 +138,7 @@ function VideoPage(props) {
                 {props.lecture.teacher.name} {props.lecture.teacher.surname}
               </Typography>
             </Box>
-            <Button sx={{ gap: "8px" }}>
+            <Button sx={{ gap: "8px" }} onClick={handleOpen}>
               <QuestionMarkIcon fontSize="small" />
               Frage stellen
             </Button>

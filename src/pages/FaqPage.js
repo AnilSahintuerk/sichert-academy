@@ -4,6 +4,7 @@ import {
   Box,
   Container,
   TextField,
+  Modal,
   Avatar,
   Typography,
   Button,
@@ -12,6 +13,9 @@ import Faq from "../components/Faq";
 import QuestionElements from "../components/QuestionElements";
 import FaqAnswer from "../components/FaqAnswer";
 import Videoplayer from "../components/Videoplayer";
+import lecturesData from "../data/LecturesData";
+import { useState } from "react";
+import teachersData from "../data/TeachersData";
 
 const FAQ_DATA = [
   {
@@ -43,7 +47,13 @@ const FAQ_DATA = [
   },
 ];
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 function FaqPage(props) {
+  props = FAQ_DATA;
+  const [active, setActive] = useState(["Frage1", 0]);
   return (
     <Box
       maxWidth="100%"
@@ -81,7 +91,7 @@ function FaqPage(props) {
           </Box>
         </Stack>
         <Stack sx={{ gap: "64px", marginTop: "16px" }}>
-          <QuestionElements />
+          <QuestionElements active={active} setActive={setActive} />
         </Stack>
       </Container>
       <Container
@@ -107,15 +117,21 @@ function FaqPage(props) {
             gap: "80px",
           }}
         >
-          <Faq />
+          <Faq lecture={lecturesData[1]} />
           <Box width="800px">
             <Typography variant="h5" sx={{ color: "#003063", pb: "8px" }}>
-              Was ist eine Lineare Regression?
+              {active[0]} ?
             </Typography>
             <Typography variant="body2" sx={{ color: "secondary.main" }}>
-              In dem Video wurde an der Stelle 01.23 die Lineare Regression
-              erwähnt. Ich weiß leider nicht was das ist und habe gehofft Sie
-              können dies nochmal etwas genauer für mich erklären. MFG
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+              erat, sed diam voluptua. At vero eos et accusam et justo duo
+              dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+              amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+              invidunt ut labore et dolore magna aliquyam erat, sed diam
+              voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+              Stet clita kasd gubergren,
             </Typography>
             <Box
               sx={{
@@ -128,12 +144,15 @@ function FaqPage(props) {
               <Typography variant="caption" color="secondary">
                 Frage gestellt von:
               </Typography>
-              <Avatar src="2.png" sx={{ height: "50px", width: "50px" }} />
+              <Avatar
+                src={teachersData[getRandomInt(11)].src}
+                sx={{ height: "50px", width: "50px" }}
+              />
             </Box>
           </Box>
-          <Videoplayer></Videoplayer>
+          <Videoplayer lecture={lecturesData[1]} />
           <FaqAnswer />
-          <Box sx={{ display: "flex", gap: "16px" }}>
+          <Box sx={{ display: "flex", gap: "16px", pb: "128px" }}>
             <Button color="secondary" variant="outlined">
               Frage löschen
             </Button>
@@ -141,19 +160,6 @@ function FaqPage(props) {
               Antwort veröffentlichen
             </Button>
           </Box>
-          <Box
-            sx={{
-              height: "500px",
-              width: "200px",
-              position: "absolute",
-              display: "flex",
-              background: "#F1F0F4",
-              justifyContent: "center",
-              alignItems: "center",
-              position: "relative",
-              overflowY: "scroll",
-            }}
-          ></Box>
         </Stack>
       </Container>
     </Box>

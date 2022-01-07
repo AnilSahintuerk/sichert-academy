@@ -7,23 +7,28 @@ function NewClassroomPage(props) {
     <Box sx={{ display: "flex" }}>
       <Stack
         spacing={10}
-        sx={{ p: "0 24px", background: "#E3E2E6", height: "100vh" }}
+        sx={{
+          p: "0 24px",
+          background: "#E3E2E6",
+          height: "100vh",
+          width: "30vw",
+        }}
       >
         <GoBack />
         <Box sx={{ maxHeight: "100vh", overflow: "scroll" }}>
           <Stack
             sx={{
+              width: "auto",
               maxWidth: "600px",
               gap: "24px",
-              pb: "128px",
             }}
           >
             <Typography variant="h4" align="center" color="sichert.main">
               Neue Klasse
             </Typography>
-            <Grid container spacing={5}>
+            <Grid container spacing={5} sx={{ width: "auto" }}>
               {props.classroom.map((student) => (
-                <Grid item xs={4} sm={4}>
+                <Grid item xs={2} sm={4}>
                   <StudentCard
                     src={student.src}
                     name={student.name}

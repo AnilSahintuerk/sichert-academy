@@ -14,6 +14,7 @@ import CurriculumCreatorPage from "./pages/CurriculumCreatorPage";
 import LectureRequestPage from "./pages/LectureRequestPage";
 import CurriculumCreatorRouter from "./routers/CurriculumCreatorRouter";
 import lecturesData from "./data/LecturesData";
+import ClassroomCreatorRouter from "./routers/ClassroomCreatorRouter";
 
 const theme = createTheme({
   palette: {
@@ -56,7 +57,12 @@ function App(props) {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/kurs_anfragen" element={<LectureRequestPage />} />
-          <Route path="/klasse_erstellen" element={<ClassroomCreatorPage />} />
+          <Route
+            path="/klasse_erstellen/*"
+            element={<ClassroomCreatorRouter />}
+          >
+            <Route path="neue_klasse/" element={<ClassroomCreatorRouter />} />
+          </Route>
           <Route path="/video_suchen/*" element={<SearchVideoPage />}>
             <Route path="video/" />
           </Route>
