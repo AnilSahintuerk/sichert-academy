@@ -12,6 +12,7 @@ import FaqPage from "./pages/FaqPage";
 import ClassroomCreatorPage from "./pages/ClassroomCreatorPage";
 import CurriculumCreatorPage from "./pages/CurriculumCreatorPage";
 import LectureRequestPage from "./pages/LectureRequestPage";
+import CurriculumCreatorRouter from "./routers/CurriculumCreatorRouter";
 import lecturesData from "./data/LecturesData";
 
 const theme = createTheme({
@@ -57,13 +58,18 @@ function App(props) {
           <Route path="/kurs_anfragen" element={<LectureRequestPage />} />
           <Route path="/klasse_erstellen" element={<ClassroomCreatorPage />} />
           <Route path="/video_suchen/*" element={<SearchVideoPage />}>
-            <Route path="video/:lecutre.id" />
+            <Route path="video/" />
           </Route>
           <Route path="/fragen_beantworten" element={<FaqPage />} />
           <Route
-            path="/lehrplan_erstellen"
-            element={<CurriculumCreatorPage />}
-          />
+            path="/lehrplan_erstellen/*"
+            element={<CurriculumCreatorRouter />}
+          >
+            <Route
+              path="neuer_lehrplan/"
+              element={<CurriculumCreatorRouter />}
+            />
+          </Route>
         </Routes>
       </div>
     </ThemeProvider>
