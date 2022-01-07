@@ -1,0 +1,71 @@
+import GoBack from "../components/GoBack";
+import { Stack, Box, Typography, TextField, Button, Grid } from "@mui/material";
+import StudentCard from "../components/StudentCard";
+
+function NewClassroomPage(props) {
+  return (
+    <Box sx={{ display: "flex" }}>
+      <Stack
+        spacing={10}
+        sx={{ p: "0 24px", background: "#E3E2E6", height: "100vh" }}
+      >
+        <GoBack />
+        <Box sx={{ maxHeight: "100vh", overflow: "scroll" }}>
+          <Stack
+            sx={{
+              maxWidth: "600px",
+              gap: "24px",
+              pb: "128px",
+            }}
+          >
+            <Typography variant="h4" align="center" color="sichert.main">
+              Neue Klasse
+            </Typography>
+            <Grid container spacing={5}>
+              {props.classroom.map((student) => (
+                <Grid item xs={4} sm={4}>
+                  <StudentCard
+                    src={student.src}
+                    name={student.name}
+                    surname={student.surname}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </Stack>
+        </Box>
+      </Stack>
+
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Stack spacing={5} sx={{ mb: "20%", width: "40%" }}>
+          <TextField
+            required
+            id="outlined-required"
+            label="Klassen Name"
+          ></TextField>
+          <TextField
+            id="outlined-required"
+            label="Lehrplan zuweisen"
+          ></TextField>
+          <TextField
+            id="outlined-required"
+            label="Nachricht"
+            multiline
+            rows={6}
+          ></TextField>
+          <Button variant="contained" color="sichert">
+            Lehrplan erstellen
+          </Button>
+        </Stack>
+      </Box>
+    </Box>
+  );
+}
+export default NewClassroomPage;
