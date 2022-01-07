@@ -8,6 +8,12 @@ import {
   Grid,
   CardContent,
   Chip,
+  Modal,
+  FormLabel,
+  FormControlLabel,
+  RadioGroup,
+  Radio,
+  TextField,
   Stack,
 } from "@mui/material";
 import GoBack from "../components/GoBack";
@@ -22,6 +28,9 @@ const allTeacherData = teachersData;
 function LectureRequestPage(props) {
   const [allTeachers, setAllTeachers] = useState(allTeacherData);
   const [preview, setPreview] = useState({});
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   console.log(allTeacherData);
 
@@ -66,6 +75,78 @@ function LectureRequestPage(props) {
           flexDirection: "column",
         }}
       >
+        <Modal
+          open={open}
+          onClose={handleClose}
+          sx={{
+            height: "100vh",
+            width: "100vw",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Card sx={{ width: "30vw", height: "auto", p: "32px" }}>
+            <Typography variant="h4" color="sichert.main" sx={{ mb: "16px" }}>
+              Kurs Anfrage
+            </Typography>
+            <Stack spacing={5} sx={{ mb: "20%", width: "100%" }}>
+              <TextField
+                required
+                id="outlined-required"
+                label="Video Titel"
+              ></TextField>
+              <TextField
+                id="outlined-required"
+                label="Video Setting"
+              ></TextField>
+              <TextField id="outlined-required" label="Tags"></TextField>
+              <Stack>
+                <FormLabel component="legend">Videolänge</FormLabel>
+                <RadioGroup color="sichert">
+                  <FormControlLabel
+                    value="kurz"
+                    color="sichert.main"
+                    control={<Radio />}
+                    label="Kurz (ca. 2-3 Min)"
+                  />
+                  <FormControlLabel
+                    value="mittel"
+                    control={<Radio />}
+                    label="Mittel (ca. 4-5 Min)"
+                  />
+                  <FormControlLabel
+                    value="lang"
+                    control={<Radio />}
+                    label="Lang (ca.6-9 Min)"
+                  />
+                </RadioGroup>
+              </Stack>
+              <TextField
+                id="outlined-required"
+                label="Nachricht"
+                multiline
+                rows={6}
+              ></TextField>
+              <Box sx={{ display: "flex", gap: "16px" }}>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={handleClose}
+                >
+                  Abbrechen
+                </Button>
+                <Button
+                  variant="contained"
+                  color="sichert"
+                  onClick={handleClose}
+                >
+                  Lehrplan erstellen
+                </Button>
+              </Box>
+            </Stack>
+          </Card>
+        </Modal>
         <Box
           sx={{
             width: "100%",
@@ -170,6 +251,7 @@ function LectureRequestPage(props) {
                   variant="contained"
                   color="sichert"
                   sx={{ m: "32px 8px 16px 8px" }}
+                  onClick={handleOpen}
                 >
                   Kurs Anfragen
                 </Button>
