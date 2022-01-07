@@ -71,6 +71,7 @@ function VideoPage(props) {
                 required
                 id="outlined-required"
                 label="Video Titel"
+                defaultValue={props.lecture.title}
               ></TextField>
               <TextField id="outlined-required" label="Zeitstempel"></TextField>
               <TextField

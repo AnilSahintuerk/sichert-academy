@@ -51,7 +51,7 @@ function QuestionElements(props) {
               color: "#003063",
               fontSize: "16px",
               fontWeight: "500",
-              background: "#7AACF9",
+              background: "#245FA7",
               color: "#fff",
               "&:hover": {
                 background: "#7AACF9",
