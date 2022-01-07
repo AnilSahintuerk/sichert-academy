@@ -21,7 +21,7 @@ function CurriculumCreatorPage(props) {
     <Box
       maxWidth="100%"
       sx={{
-        height: "auto",
+        height: "94vh",
         display: "flex",
         overflow: "hidden",
         position: "relative",
@@ -47,7 +47,7 @@ function CurriculumCreatorPage(props) {
           width: "80vw",
           background: "#fff",
           display: "flex",
-          overflowY: "scroll",
+          // overflowY: "scroll",
           flexDirection: "column",
         }}
       >
