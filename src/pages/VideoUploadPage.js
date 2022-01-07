@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
+import GoBack from "../components/GoBack";
 
 function VideoUploadPage() {
   const navigate = useNavigate();
@@ -23,6 +24,9 @@ function VideoUploadPage() {
         gap: "48px",
       }}
     >
+      <Box sx={{ position: "absolute", top: "60px", left: "24px" }}>
+        <GoBack />
+      </Box>
       <Typography variant="h3" color="sichert.main">
         Lerneinheit Hochladen
       </Typography>

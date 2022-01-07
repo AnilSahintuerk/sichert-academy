@@ -10,6 +10,7 @@ import LectureRequestPage from "./pages/LectureRequestPage";
 import CurriculumCreatorRouter from "./routers/CurriculumCreatorRouter";
 import ClassroomCreatorRouter from "./routers/ClassroomCreatorRouter";
 import VideoUploadPage from "./pages/VideoUploadPage";
+import SupportPage from "./pages/SupportPage";
 import ExerciseSelectionPage from "./pages/ExerciseSelectionPage";
 
 const theme = createTheme({
@@ -79,6 +80,7 @@ function App(props) {
             element={<ExerciseSelectionPage />}
           />
           <Route path="/mc" element={<ExerciseCreatorPage />} />
+          <Route path="/support" element={<SupportPage />} />
         </Routes>
       </div>
     </ThemeProvider>
