@@ -141,7 +141,7 @@ function LectureRequestPage(props) {
                   color="sichert"
                   onClick={handleClose}
                 >
-                  Lehrplan erstellen
+                  Anfrage stellen
                 </Button>
               </Box>
             </Stack>

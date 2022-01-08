@@ -42,7 +42,7 @@ function NewCurriculumPage(props) {
             id="outlined-required"
             label="Lehrplan Name"
           ></TextField>
-          <TextField id="outlined-required" label="Klasse"></TextField>
+          <TextField id="outlined-required" label="Klasse zuweisen"></TextField>
           <TextField
             id="outlined-required"
             label="Nachricht"

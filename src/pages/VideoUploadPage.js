@@ -64,6 +64,12 @@ function VideoUploadPage() {
         <TextField id="outlined-required" label="Tags"></TextField>
         <TextField
           id="outlined-required"
+          label="Lernziele"
+          multiline
+          rows={3}
+        ></TextField>
+        <TextField
+          id="outlined-required"
           label="Videobeschreibung"
           multiline
           rows={6}
