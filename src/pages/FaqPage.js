@@ -53,7 +53,7 @@ function getRandomInt(max) {
 
 function FaqPage(props) {
   props = FAQ_DATA;
-  const [active, setActive] = useState(["Frage1", 0]);
+  const [active, setActive] = useState(["Warum ist das nützlich?", 0]);
   return (
     <Box
       maxWidth="100%"
@@ -120,7 +120,7 @@ function FaqPage(props) {
           <Faq lecture={lecturesData[1]} />
           <Box width="800px">
             <Typography variant="h5" sx={{ color: "#003063", pb: "8px" }}>
-              {active[0]} ?
+              {active[0]}
             </Typography>
             <Typography variant="body2" sx={{ color: "secondary.main" }}>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam

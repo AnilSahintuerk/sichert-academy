@@ -12,6 +12,7 @@ import ClassroomCreatorRouter from "./routers/ClassroomCreatorRouter";
 import VideoUploadPage from "./pages/VideoUploadPage";
 import SupportPage from "./pages/SupportPage";
 import ExerciseSelectionPage from "./pages/ExerciseSelectionPage";
+import FollowCurriculumPage from "./pages/FollowCurriculumPage";
 
 const theme = createTheme({
   palette: {
@@ -72,7 +73,10 @@ function App(props) {
           <Route path="/video_suchen/*" element={<SearchVideoPage />}>
             <Route path="video/" />
           </Route>
-          <Route path="/lehrplan_verfolgen" element={<p>to be done</p>} />
+          <Route
+            path="/lehrplan_verfolgen"
+            element={<FollowCurriculumPage />}
+          />
           <Route path="/fragen_beantworten" element={<FaqPage />} />
           <Route path="/kurs_hochladen" element={<VideoUploadPage />} />
           <Route
