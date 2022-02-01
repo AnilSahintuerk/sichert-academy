@@ -21,6 +21,8 @@ import AttachFileIcon from "@mui/icons-material/AttachFile";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useState } from "react";
 import CheckIcon from "@mui/icons-material/Check";
+import FlagIcon from "@mui/icons-material/Flag";
+import { useNavigate } from "react-router-dom";
 
 const LEHRPLAN = [
   {
@@ -42,6 +44,7 @@ function FollowCurriculumPage(props) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -156,10 +159,16 @@ function FollowCurriculumPage(props) {
                 {lecturesData[1].teacher.name} {lecturesData[1].teacher.surname}
               </Typography>
             </Box>
-            <Button sx={{ gap: "8px" }} onClick={handleOpen}>
-              <QuestionMarkIcon fontSize="small" />
-              Frage stellen
-            </Button>
+            <Box sx={{ display: "flex" }}>
+              <Button sx={{ gap: "8px" }} onClick={handleOpen}>
+                <QuestionMarkIcon fontSize="small" />
+                Frage stellen
+              </Button>
+              <Button sx={{ gap: "8px" }} onClick={() => navigate("/support")}>
+                <FlagIcon fontSize="small" />
+                Problem melden
+              </Button>
+            </Box>
           </Box>
           <Divider sx={{ mt: "16px" }} />
           <Stack

@@ -19,12 +19,15 @@ import DescriptionBox from "../components/DescriptionBox";
 import lecturesData from "../data/LecturesData";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { useState } from "react";
+import FlagIcon from "@mui/icons-material/Flag";
+import { useNavigate } from "react-router-dom";
 
 function VideoPage(props) {
   const [descBoxActive, setDescBoxActive] = useState(true);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -139,10 +142,16 @@ function VideoPage(props) {
                 {props.lecture.teacher.name} {props.lecture.teacher.surname}
               </Typography>
             </Box>
-            <Button sx={{ gap: "8px" }} onClick={handleOpen}>
-              <QuestionMarkIcon fontSize="small" />
-              Frage stellen
-            </Button>
+            <Box sx={{ display: "flex" }}>
+              <Button sx={{ gap: "8px" }} onClick={handleOpen}>
+                <QuestionMarkIcon fontSize="small" />
+                Frage stellen
+              </Button>
+              <Button sx={{ gap: "8px" }} onClick={() => navigate("/support")}>
+                <FlagIcon fontSize="small" />
+                Problem melden
+              </Button>
+            </Box>
           </Box>
           <Divider sx={{ mt: "16px" }} />
           <Stack

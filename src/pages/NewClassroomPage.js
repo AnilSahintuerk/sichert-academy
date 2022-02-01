@@ -23,7 +23,7 @@ function NewClassroomPage(props) {
               gap: "24px",
             }}
           >
-            <Typography variant="h4" align="center" color="sichert.main">
+            <Typography variant="h4" align="center" sx={{ color: "#563E5D" }}>
               Neue Klasse
             </Typography>
             <Grid container spacing={5} sx={{ width: "auto" }}>
@@ -50,6 +50,9 @@ function NewClassroomPage(props) {
         }}
       >
         <Stack spacing={5} sx={{ mb: "20%", width: "40%" }}>
+          <Typography color="sichert.main" variant="h4" align="center">
+            Klassen Details
+          </Typography>
           <TextField
             required
             id="outlined-required"

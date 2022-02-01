@@ -37,6 +37,9 @@ function NewCurriculumPage(props) {
         }}
       >
         <Stack spacing={5} sx={{ mb: "20%", width: "40%" }}>
+          <Typography color="sichert.main" variant="h4" align="center">
+            Lehrplan Details
+          </Typography>
           <TextField
             required
             id="outlined-required"

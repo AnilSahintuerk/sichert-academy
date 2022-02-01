@@ -5,7 +5,7 @@ import { Stack, Box, Container, TextField } from "@mui/material";
 
 const DATA = {
   question: "Wann wurde die Firma gegründet?",
-  answers: ["1914", "1941", "1972", "2001"],
+  answers: ["1914", "1923", "1972", "2001"],
   correct: ["1"],
 };
 
