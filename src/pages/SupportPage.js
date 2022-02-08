@@ -51,7 +51,7 @@ function SupportPage() {
             Abbrechen
           </Button>
           <Button variant="contained" color="sichert">
-            Lerneinheit hochladen
+            Problem melden
           </Button>
         </Box>
       </Stack>
